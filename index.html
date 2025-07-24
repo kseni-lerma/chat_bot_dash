@@ -1,0 +1,427 @@
+
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ипотечный дашборд</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+            <span>Меню</span>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-chart-pie"></i> Показатели</h2>
+            </div>
+            <ul class="sidebar-menu">
+    
+                <li class="menu-item active" data-tab="tab-0">
+                    <span>Количество кредитных организаций</span>
+                </li>
+        
+                <li class="menu-item " data-tab="tab-1">
+                    <span>Остаток ссудной задолженности</span>
+                </li>
+        
+                <li class="menu-item " data-tab="tab-2">
+                    <span>Просроченная задолженность</span>
+                </li>
+        
+                <li class="menu-item " data-tab="tab-3">
+                    <span>Объем выданных кредитов</span>
+                </li>
+        
+                <li class="menu-item " data-tab="tab-4">
+                    <span>Количество выданных кредитов</span>
+                </li>
+        
+            </ul>
+        </aside>
+
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-chart-line"></i> Ипотека</h1>
+                <div id="current-tab" class="current-tab">Количество кредитных организаций</div>
+            </div>
+    
+            <div class="content active" id="tab-0">
+                <div class="dashboard">
+        
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК</div>
+                    <div class="kpi-value">231</div>
+                    <div class="kpi-period">за 1 кв. 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-2.12%</span>
+                            <span class="period-type">(QoQ)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество кредитных организаций" 
+                            data-subcategory="ИЖК">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК по ДДУ</div>
+                    <div class="kpi-value">87</div>
+                    <div class="kpi-period">за 1 кв. 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-5.43%</span>
+                            <span class="period-type">(QoQ)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество кредитных организаций" 
+                            data-subcategory="ИЖК по ДДУ">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК на цели ИЖС</div>
+                    <div class="kpi-value">127</div>
+                    <div class="kpi-period">за 1 кв. 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+126.79%</span>
+                            <span class="period-type">(QoQ)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество кредитных организаций" 
+                            data-subcategory="ИЖК на цели ИЖС">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">Льготная ипотека</div>
+                    <div class="kpi-value">48</div>
+                    <div class="kpi-period">за 1 кв. 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-9.43%</span>
+                            <span class="period-type">(QoQ)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество кредитных организаций" 
+                            data-subcategory="Льготная ипотека">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                </div>
+            </div>
+        
+            <div class="content " id="tab-1">
+                <div class="dashboard">
+        
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК</div>
+                    <div class="kpi-value">19.46 млрд</div>
+                    <div class="kpi-period">01.06.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+0.63%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Остаток ссудной задолженности" 
+                            data-subcategory="ИЖК">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК по ДДУ</div>
+                    <div class="kpi-value">4.28 млрд</div>
+                    <div class="kpi-period">01.06.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-1.1%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Остаток ссудной задолженности" 
+                            data-subcategory="ИЖК по ДДУ">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                </div>
+            </div>
+        
+            <div class="content " id="tab-2">
+                <div class="dashboard">
+        
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК</div>
+                    <div class="kpi-value">137 млн</div>
+                    <div class="kpi-period">01.06.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+8.0%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Просроченная задолженность" 
+                            data-subcategory="ИЖК">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК по ДДУ</div>
+                    <div class="kpi-value">13 млн</div>
+                    <div class="kpi-period">01.06.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+5.6%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Просроченная задолженность" 
+                            data-subcategory="ИЖК по ДДУ">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                </div>
+            </div>
+        
+            <div class="content " id="tab-3">
+                <div class="dashboard">
+        
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК</div>
+                    <div class="kpi-value">287 млн</div>
+                    <div class="kpi-period">май 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-1.02%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Объем выданных кредитов" 
+                            data-subcategory="ИЖК">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК по ДДУ</div>
+                    <div class="kpi-value">167 млн</div>
+                    <div class="kpi-period">май 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+0.31%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Объем выданных кредитов" 
+                            data-subcategory="ИЖК по ДДУ">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК на цели ИЖС</div>
+                    <div class="kpi-value">39 млн</div>
+                    <div class="kpi-period">01.06.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+6.42%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Объем выданных кредитов" 
+                            data-subcategory="ИЖК на цели ИЖС">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">Льготная ипотека</div>
+                    <div class="kpi-value">1.19 трлн</div>
+                    <div class="kpi-period">янв – май 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+31.96%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Объем выданных кредитов" 
+                            data-subcategory="Льготная ипотека">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                </div>
+            </div>
+        
+            <div class="content " id="tab-4">
+                <div class="dashboard">
+        
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК</div>
+                    <div class="kpi-value">63 261</div>
+                    <div class="kpi-period">май 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-3.04%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество выданных кредитов" 
+                            data-subcategory="ИЖК">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК по ДДУ</div>
+                    <div class="kpi-value">29 197</div>
+                    <div class="kpi-period">май 2025</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-down">▼</span>
+                            <span>-1.57%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество выданных кредитов" 
+                            data-subcategory="ИЖК по ДДУ">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">ИЖК на цели ИЖС</div>
+                    <div class="kpi-value">10 489</div>
+                    <div class="kpi-period">01.06.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+0.11%</span>
+                            <span class="period-type">(MoM)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество выданных кредитов" 
+                            data-subcategory="ИЖК на цели ИЖС">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                <div class="kpi-card">
+                    <div class="kpi-subcategory">Льготная ипотека</div>
+                    <div class="kpi-value">0.27 млн</div>
+                    <div class="kpi-period">01.05.25</div>
+                    <div>
+                        <div class="kpi-change-container">
+                            <span class="trend-up">▲</span>
+                            <span>+30.52%</span>
+                            <span class="period-type">(YoY)</span>
+                        </div>
+                    </div>
+                    <button class="detail-btn" 
+                            data-category="Количество выданных кредитов" 
+                            data-subcategory="Льготная ипотека">
+                        <i class="fas fa-chart-bar"></i> Детализация
+                    </button>
+                </div>
+            
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Источник: <strong>cbr.ru</strong></p>
+            </div>
+        </div>
+        
+        <!-- Блок детализации -->
+        <div id="detail-view" class="hidden">
+            <div class="detail-header">
+                <button id="detail-back-btn" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Назад к дашборду
+                </button>
+                <h2 id="detail-title"></h2>
+            </div>
+            
+            <div class="detail-controls">
+                <div class="date-filter">
+                    <label for="start-date">От:</label>
+                    <input type="date" id="start-date">
+                    
+                    <label for="end-date">До:</label>
+                    <input type="date" id="end-date">
+                    
+                    <button id="apply-filter">
+                        <i class="fas fa-filter"></i> Применить фильтр
+                    </button>
+                </div>
+                
+                <div class="data-range">
+                    <i class="fas fa-info-circle"></i> Доступные данные: 
+                    <span id="min-date"></span> - <span id="max-date"></span>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="detail-chart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <table id="detail-table">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Значение</th>
+                            <th>Ед. изм.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="detail-table-body">
+                        <!-- Данные будут заполнены через JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
