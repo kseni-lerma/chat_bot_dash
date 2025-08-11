@@ -10,7 +10,7 @@
     --light: #f8fafc;
     --dark: #1e293b;
     --gray: #64748b;
-    --card-bg: #f8fafc;
+    --card-bg: #ffffff;
     --card-border: #e2e8f0;
     --text-color: #334155;
     --border-radius: 12px;
@@ -251,24 +251,6 @@ body.detail-view-active .sidebar-toggle {
     flex-direction: column;
     gap: 30px;
     padding: 0;
-}
-
-.category-group {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: 20px;
-    transition: var(--transition);
-}
-
-.category-group h3 {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--card-border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--secondary);
 }
 
 .kpi-group {
@@ -606,6 +588,16 @@ body.detail-view-active .sidebar-toggle {
 
 .detail-table tr.section-header:hover {
     background-color: #f1f5f9 !important;
+}
+
+/* Специальное примечание для льготной ипотеки */
+.note-row td {
+    text-align: center !important;
+    font-style: italic;
+    color: #666;
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 /* Адаптивность */
