@@ -51,48 +51,6 @@ body.detail-view-active {
     margin: 0 auto;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    position: relative;
-}
-
-.header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-weight: 800;
-}
-
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    padding: 0 15px;
-}
-
-.section-header h2 {
-    font-size: 1.8rem;
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.section-header .divider {
-    color: var(--gray);
-    margin: 0 8px;
-}
-
 /* Стили бокового меню */
 .sidebar {
     position: fixed;
@@ -253,28 +211,27 @@ body.detail-view-active .sidebar-toggle {
     padding: 0;
 }
 
-.category-group {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: 20px;
-    transition: var(--transition);
+.kpi-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.category-group h3 {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--card-border);
+.category-title {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    padding: 0 15px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--secondary);
 }
 
-.kpi-group {
+.kpi-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
+    padding: 0 15px;
 }
 
 .kpi-card {
@@ -304,7 +261,7 @@ body.detail-view-active .sidebar-toggle {
 }
 
 .kpi-subcategory {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #475569;
     flex: 1;
@@ -331,7 +288,7 @@ body.detail-view-active .sidebar-toggle {
 }
 
 .kpi-value {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 800;
     color: var(--primary);
     line-height: 1.2;
@@ -356,17 +313,6 @@ body.detail-view-active .sidebar-toggle {
 
 .trend-down {
     color: var(--danger);
-}
-
-/* Стиль для текущей вкладки */
-.current-section {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-top: 10px;
-    color: grey;
-    background:transparent;
-    display: inline-block;
-    padding: 5px 15px;
 }
 
 .footer {
@@ -610,12 +556,8 @@ body.detail-view-active .sidebar-toggle {
 
 /* Адаптивность */
 @media (max-width: 992px) {
-    .kpi-group {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .kpi-value {
-        font-size: 1.7rem;
+    .kpi-cards {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
 }
 
@@ -633,11 +575,6 @@ body.detail-view-active .sidebar-toggle {
     .sidebar-toggle {
         left: 15px;
         top: 25px;
-    }
-
-    .header h1 {
-        font-size: 2rem;
-        padding: 0 20px;
     }
 
     .detail-header {
@@ -669,11 +606,11 @@ body.detail-view-active .sidebar-toggle {
 
     .dashboard {
         gap: 15px;
-        padding: 0 10px;
     }
 
-    .kpi-group {
+    .kpi-cards {
         grid-template-columns: 1fr;
+        padding: 0 10px;
     }
 
     .kpi-card {
