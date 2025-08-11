@@ -17,54 +17,29 @@ sidebarToggle.addEventListener('click', () => {
     }
 });
 
-// Обработчики для подменю
-document.querySelectorAll('.submenu-toggle').forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const menuItem = this.closest('.menu-item');
-        menuItem.classList.toggle('active');
-    });
-});
-
-// Переключение разделов
-const menuItems = document.querySelectorAll('.menu-item:not(.has-submenu)');
-const submenuItems = document.querySelectorAll('.submenu-item');
+// Переключение вкладок
+const menuItems = document.querySelectorAll('.menu-item');
 const contents = document.querySelectorAll('.content');
-const currentSectionElement = document.getElementById('current-section');
+const currentTabElement = document.getElementById('current-tab');
 
-// Функция для активации раздела
-function activateSection(sectionId, sectionName) {
-    // Скрываем все контенты
-    contents.forEach(c => c.classList.remove('active'));
-    
-    // Показываем выбранный контент
-    const contentElement = document.getElementById(`content-${sectionId}`);
-    if (contentElement) {
-        contentElement.classList.add('active');
-    }
-    
-    // Обновляем название текущего раздела
-    currentSectionElement.textContent = sectionName;
-    
-    // Сохраняем активный раздел в localStorage
-    localStorage.setItem('activeSection', sectionId);
-}
-
-// Функция для активации группы
-function activateGroup(section, group) {
-    const sectionId = `${section}-${group}`;
-    activateSection(sectionId, `${section} / ${group}`);
-    
-    // Сохраняем активную группу в localStorage
-    localStorage.setItem('activeGroup', group);
-}
-
-// Обработчики для пунктов меню
 menuItems.forEach(item => {
     item.addEventListener('click', function() {
-        const section = this.getAttribute('data-section');
-        activateSection(section, section);
-        
+        const tabId = this.getAttribute('data-tab');
+        const sectionName = this.getAttribute('data-section');
+
+        // Обновляем название текущей вкладки
+        currentTabElement.textContent = sectionName;
+
+        // Убираем активный класс у всех пунктов меню
+        menuItems.forEach(i => i.classList.remove('active'));
+        // Добавляем активный класс текущему пункту
+        this.classList.add('active');
+
+        // Скрываем все вкладки контента
+        contents.forEach(c => c.classList.remove('active'));
+        // Показываем выбранную вкладку
+        document.getElementById(tabId).classList.add('active');
+
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
             body.classList.remove('sidebar-open');
@@ -72,41 +47,6 @@ menuItems.forEach(item => {
             sidebarToggle.querySelector('i').classList.add('fa-bars');
         }
     });
-});
-
-// Обработчики для пунктов подменю
-submenuItems.forEach(item => {
-    item.addEventListener('click', function() {
-        const section = this.getAttribute('data-section');
-        const group = this.getAttribute('data-group');
-        activateGroup(section, group);
-        
-        // На мобильных устройствах закрываем меню после выбора
-        if (window.innerWidth <= 768) {
-            body.classList.remove('sidebar-open');
-            sidebarToggle.querySelector('i').classList.remove('fa-times');
-            sidebarToggle.querySelector('i').classList.add('fa-bars');
-        }
-    });
-});
-
-// Восстановление активного раздела при загрузке
-document.addEventListener('DOMContentLoaded', () => {
-    const savedSection = localStorage.getItem('activeSection');
-    const savedGroup = localStorage.getItem('activeGroup');
-    
-    if (savedSection && savedGroup) {
-        activateGroup(savedSection, savedGroup);
-    } else if (savedSection) {
-        activateSection(savedSection, savedSection);
-    } else {
-        // Активируем первый раздел по умолчанию
-        const firstSection = document.querySelector('.menu-item');
-        if (firstSection) {
-            const section = firstSection.getAttribute('data-section') || 'Основные показатели';
-            activateSection(section, section);
-        }
-    }
 });
 
 // Детализация показателей
@@ -145,18 +85,12 @@ document.querySelectorAll('.detail-btn').forEach(btn => {
 
         // Показываем экран детализации
         showDetailView(key, category, subcategory);
-        
-        // Разворачиваем на весь экран
-        body.classList.add('detail-view-active');
     });
 });
 
 // Обработчик для кнопки "Назад"
 backBtn.addEventListener('click', function() {
     hideDetailView();
-    
-    // Возвращаемся к обычному виду
-    body.classList.remove('detail-view-active');
 });
 
 // Автоматическое обновление при изменении дат
@@ -224,11 +158,13 @@ function showDetailView(key, category, subcategory) {
     updateDetailView();
 
     // Показываем экран детализации
+    body.classList.add('detail-view-active');
     detailView.classList.remove('hidden');
 }
 
 // Скрыть экран детализации
 function hideDetailView() {
+    body.classList.remove('detail-view-active');
     detailView.classList.add('hidden');
 
     // Уничтожаем текущий график
@@ -365,17 +301,6 @@ function createTable(data, container, sectionTitle, formatAsPeriod, isPremiumMor
         sectionHeader.classList.add('section-header');
         sectionHeader.innerHTML = `<td colspan="2">${sectionTitle}</td>`;
         tbody.appendChild(sectionHeader);
-    }
-
-    // Добавляем примечание для льготной ипотеки
-    if (isPremiumMortgage) {
-        const noteRow = document.createElement('tr');
-        noteRow.classList.add('note-row');
-        const noteCell = document.createElement('td');
-        noteCell.colSpan = 2;
-        noteCell.textContent = 'Данные представлены в виде накопленного итога за год';
-        tbody.appendChild(noteRow);
-        noteRow.appendChild(noteCell);
     }
 
     data.forEach(item => {
