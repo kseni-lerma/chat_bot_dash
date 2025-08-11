@@ -10,7 +10,7 @@
     --light: #f8fafc;
     --dark: #1e293b;
     --gray: #64748b;
-    --card-bg: #ffffff;
+    --card-bg: #f8fafc;
     --card-border: #e2e8f0;
     --text-color: #334155;
     --border-radius: 12px;
@@ -73,24 +73,66 @@ body.detail-view-active {
 }
 
 .section-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    padding: 0 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(90, 122, 233, 0.05);
+    border-radius: var(--border-radius);
 }
 
 .section-header h2 {
     font-size: 1.8rem;
-    color: var(--dark);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.group-container {
+    margin-bottom: 40px;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.group-title {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(109, 90, 207, 0.1);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.section-header .divider {
+.group-title:before {
+    content: "•";
+    color: var(--secondary);
+    font-size: 1.8rem;
+    line-height: 0;
+}
+
+.empty-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.empty-section i {
+    font-size: 3rem;
     color: var(--gray);
-    margin: 0 8px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-section p {
+    font-size: 1.2rem;
+    color: var(--gray);
 }
 
 /* Стили бокового меню */
@@ -169,68 +211,24 @@ body.detail-view-active .sidebar-toggle {
     padding: 12px 25px;
     cursor: pointer;
     transition: var(--transition);
-    position: relative;
-}
-
-.menu-item.has-submenu {
-    padding: 0;
-}
-
-.menu-item.has-submenu > .menu-main-item {
-    padding: 12px 25px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
+    font-size: 1.05rem;
+    font-weight: 500;
 }
 
-.menu-item i, .menu-main-item i {
-    width: 24px;
-    text-align: center;
-}
-
-.menu-item:hover, .menu-item.active,
-.menu-main-item:hover {
+.menu-item:hover, .menu-item.active {
     background: rgba(255,255,255,0.15);
     border-left: 4px solid white;
 }
 
-.submenu {
-    list-style: none;
-    padding: 0;
-    background: rgba(0,0,0,0.1);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+.menu-item i {
+    width: 24px;
+    text-align: center;
 }
 
-.menu-item.active .submenu {
-    max-height: 1000px;
-}
-
-.submenu-item {
-    padding: 10px 25px 10px 50px;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.submenu-item:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.submenu-toggle {
-    transition: transform 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.menu-item.active .submenu-toggle {
-    transform: rotate(180deg);
-}
-
-/* Переключение вкладок */
+/* Стили контента */
 .content {
     display: none;
     animation: fadeIn 0.4s ease;
@@ -247,16 +245,11 @@ body.detail-view-active .sidebar-toggle {
 
 /* Стили карточек */
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 0;
-}
-
-.kpi-group {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
+    padding: 0;
+    justify-items: center;
 }
 
 .kpi-card {
@@ -269,6 +262,8 @@ body.detail-view-active .sidebar-toggle {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    max-width: 350px;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -290,8 +285,8 @@ body.detail-view-active .sidebar-toggle {
     font-weight: 700;
     color: #475569;
     flex: 1;
-    word-break: break-word;
-    white-space: normal;
+    word-break: break-word; /* Разрешить перенос слов */
+    white-space: normal; /* Разрешить перенос строк */
 }
 
 .kpi-period {
@@ -340,8 +335,15 @@ body.detail-view-active .sidebar-toggle {
     color: var(--danger);
 }
 
+.period-type {
+    font-size: 0.85rem;
+    color: var(--gray);
+    font-weight: normal;
+    margin-left: 5px;
+}
+
 /* Стиль для текущей вкладки */
-.current-section {
+.current-tab {
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 10px;
@@ -388,8 +390,8 @@ body.detail-view-active .sidebar-toggle {
     font-size: 0.9rem;
 }
 
-.btn-text {
-    margin-left: 5px;
+.detail-text {
+    display: none;
 }
 
 /* Детализация показателя */
@@ -590,24 +592,20 @@ body.detail-view-active .sidebar-toggle {
     background-color: #f1f5f9 !important;
 }
 
-/* Специальное примечание для льготной ипотеки */
-.note-row td {
-    text-align: center !important;
-    font-style: italic;
-    color: #666;
-    background-color: #f9f9f9;
-    padding: 12px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
 /* Адаптивность */
 @media (max-width: 992px) {
-    .kpi-group {
+    .dashboard {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     .kpi-value {
         font-size: 1.7rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .detail-text {
+        display: inline;
     }
 }
 
@@ -660,12 +658,9 @@ body.detail-view-active .sidebar-toggle {
     }
 
     .dashboard {
+        grid-template-columns: 1fr;
         gap: 15px;
         padding: 0 10px;
-    }
-
-    .kpi-group {
-        grid-template-columns: 1fr;
     }
 
     .kpi-card {
@@ -684,8 +679,10 @@ body.detail-view-active .sidebar-toggle {
 
     .kpi-subcategory {
         font-size: 1rem;
+        /* Разрешить перенос слов на несколько строк */
         white-space: normal;
         word-break: break-word;
+        /* Убрать обрезку текста */
         overflow: visible;
         text-overflow: clip;
     }
@@ -731,7 +728,7 @@ body.detail-view-active .sidebar-toggle {
         font-size: 0.8rem;
     }
 
-    .btn-text {
+    .detail-btn span {
         display: none;
     }
 
