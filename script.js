@@ -367,6 +367,17 @@ function createTable(data, container, sectionTitle, formatAsPeriod, isPremiumMor
         tbody.appendChild(sectionHeader);
     }
 
+    // Добавляем примечание для льготной ипотеки
+    if (isPremiumMortgage) {
+        const noteRow = document.createElement('tr');
+        noteRow.classList.add('note-row');
+        const noteCell = document.createElement('td');
+        noteCell.colSpan = 2;
+        noteCell.textContent = 'Данные представлены в виде накопленного итога за год';
+        tbody.appendChild(noteRow);
+        noteRow.appendChild(noteCell);
+    }
+
     data.forEach(item => {
         const row = document.createElement('tr');
 
