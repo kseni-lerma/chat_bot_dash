@@ -30,10 +30,9 @@ document.querySelectorAll('.submenu-toggle').forEach(toggle => {
 const menuItems = document.querySelectorAll('.menu-item:not(.has-submenu)');
 const submenuItems = document.querySelectorAll('.submenu-item');
 const contents = document.querySelectorAll('.content');
-const currentSectionElement = document.getElementById('current-section');
 
 // Функция для активации раздела
-function activateSection(sectionId, sectionName) {
+function activateSection(sectionId) {
     // Скрываем все контенты
     contents.forEach(c => c.classList.remove('active'));
     
@@ -43,9 +42,6 @@ function activateSection(sectionId, sectionName) {
         contentElement.classList.add('active');
     }
     
-    // Обновляем название текущего раздела
-    currentSectionElement.textContent = sectionName;
-    
     // Сохраняем активный раздел в localStorage
     localStorage.setItem('activeSection', sectionId);
 }
@@ -53,7 +49,7 @@ function activateSection(sectionId, sectionName) {
 // Функция для активации группы
 function activateGroup(section, group) {
     const sectionId = `${section}-${group}`;
-    activateSection(sectionId, `${section} / ${group}`);
+    activateSection(sectionId);
     
     // Сохраняем активную группу в localStorage
     localStorage.setItem('activeGroup', group);
@@ -63,7 +59,7 @@ function activateGroup(section, group) {
 menuItems.forEach(item => {
     item.addEventListener('click', function() {
         const section = this.getAttribute('data-section');
-        activateSection(section, section);
+        activateSection(section);
         
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
@@ -98,13 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else if (savedSection) {
-        activateSection(savedSection, savedSection);
+        activateSection(savedSection);
     } else {
         // Активируем первый раздел по умолчанию
         const firstSection = document.querySelector('.menu-item');
         if (firstSection) {
             const section = firstSection.getAttribute('data-section') || 'Основные показатели';
-            activateSection(section, section);
+            activateSection(section);
         }
     }
 });
