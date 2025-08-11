@@ -91,10 +91,6 @@ body.detail-view-active {
 
 .group-container {
     margin-bottom: 40px;
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 20px;
-    box-shadow: var(--box-shadow);
 }
 
 .group-title {
@@ -271,6 +267,13 @@ body.detail-view-active .sidebar-toggle {
 .kpi-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--hover-shadow);
+}
+
+.kpi-category {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .kpi-header {
@@ -668,6 +671,10 @@ body.detail-view-active .sidebar-toggle {
         max-width: 100%;
         flex-direction: row;
         align-items: center;
+    }
+
+    .kpi-category {
+        display: none;
     }
 
     .kpi-header {
