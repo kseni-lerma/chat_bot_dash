@@ -51,6 +51,19 @@ body.detail-view-active {
     margin: 0 auto;
 }
 
+.section-header {
+    padding: 15px 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.section-header h1 {
+    font-size: 1.8rem;
+    color: var(--secondary);
+}
+
 /* Стили бокового меню */
 .sidebar {
     position: fixed;
@@ -222,9 +235,6 @@ body.detail-view-active .sidebar-toggle {
     color: var(--secondary);
     padding: 0 15px;
     margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .kpi-cards {
