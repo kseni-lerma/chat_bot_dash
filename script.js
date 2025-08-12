@@ -35,13 +35,13 @@ const contents = document.querySelectorAll('.content');
 function activateSection(sectionId) {
     // Скрываем все контенты
     contents.forEach(c => c.classList.remove('active'));
-    
+
     // Показываем выбранный контент
     const contentElement = document.getElementById(`content-${sectionId}`);
     if (contentElement) {
         contentElement.classList.add('active');
     }
-    
+
     // Сохраняем активный раздел в localStorage
     localStorage.setItem('activeSection', sectionId);
 }
@@ -50,7 +50,7 @@ function activateSection(sectionId) {
 function activateGroup(section, group) {
     const sectionId = `${section}-${group}`;
     activateSection(sectionId);
-    
+
     // Сохраняем активную группу в localStorage
     localStorage.setItem('activeGroup', group);
 }
@@ -60,7 +60,7 @@ menuItems.forEach(item => {
     item.addEventListener('click', function() {
         const section = this.getAttribute('data-section');
         activateSection(section);
-        
+
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
             body.classList.remove('sidebar-open');
@@ -76,7 +76,7 @@ submenuItems.forEach(item => {
         const section = this.getAttribute('data-section');
         const group = this.getAttribute('data-group');
         activateGroup(section, group);
-        
+
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
             body.classList.remove('sidebar-open');
@@ -90,7 +90,7 @@ submenuItems.forEach(item => {
 document.addEventListener('DOMContentLoaded', () => {
     const savedSection = localStorage.getItem('activeSection');
     const savedGroup = localStorage.getItem('activeGroup');
-    
+
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else if (savedSection) {
@@ -141,7 +141,7 @@ document.querySelectorAll('.detail-btn').forEach(btn => {
 
         // Показываем экран детализации
         showDetailView(key, category, subcategory);
-        
+
         // Разворачиваем на весь экран
         body.classList.add('detail-view-active');
     });
@@ -150,7 +150,7 @@ document.querySelectorAll('.detail-btn').forEach(btn => {
 // Обработчик для кнопки "Назад"
 backBtn.addEventListener('click', function() {
     hideDetailView();
-    
+
     // Возвращаемся к обычному виду
     body.classList.remove('detail-view-active');
 });
