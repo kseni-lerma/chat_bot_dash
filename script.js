@@ -346,7 +346,7 @@ function formatDateBasedOnIndicator(dateString) {
         return `${quarter} кв ${date.getFullYear()}`;
     }
 
-    // Специальная обработка для льготной ипотеки
+    // Специальная обработка для льготной ипотеки - количество выданных кредитов
     if (currentIndicatorName.includes('Льготная ипотека')) {
         // Для объема выданных кредитов до 2024 года - только год
         if (currentIndicatorName.includes('Объем выданных кредитов') && dateString < '2025-01-01') {
@@ -486,8 +486,8 @@ function renderStandardChart(data, isPremiumMortgage) {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
+            responsive: true;
+            maintainAspectRatio: false;
             layout: {
                 padding: {
                     top: 10,
@@ -624,8 +624,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
@@ -727,8 +727,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
