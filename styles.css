@@ -230,11 +230,14 @@ body.detail-view-active .sidebar-toggle {
     gap: 15px;
 }
 
+/* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ЗАГОЛОВКОВ КАТЕГОРИЙ */
 .category-title {
     font-size: 1.4rem;
-    color: var(--secondary);
+    color: #333; /* Темно-серый цвет */
     padding: 0 15px;
     margin-bottom: 5px;
+    background: none; /* Убрали подложку */
+    text-align: center; /* Выравнивание по центру */
 }
 
 .kpi-cards {
@@ -414,17 +417,19 @@ body.detail-view-active .sidebar-toggle {
     margin-top: 5px;
 }
 
-/* Обновленная кнопка "Назад" */
+/* ОБНОВЛЕННАЯ КНОПКА "НАЗАД" С ЗАКРУГЛЕНИЯМИ */
 .back-btn {
-    padding: 10px 20px;
+    padding: 0 15px;
+    height: 40px;
     background: linear-gradient(135deg, #4a67d8, #5e4fc9);
     border: none;
-    border-radius: 8px;
+    border-radius: 20px; /* Закругленные углы */
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     color: white;
     transition: var(--transition);
