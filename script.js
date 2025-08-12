@@ -17,6 +17,25 @@ sidebarToggle.addEventListener('click', () => {
     }
 });
 
+// Закрытие меню при клике вне области
+document.addEventListener('click', function(event) {
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+    // Если клик был не по боковому меню и не по кнопке переключения меню, и меню открыто
+    if (!sidebar.contains(event.target) && 
+        event.target !== sidebarToggle && 
+        !sidebarToggle.contains(event.target) && 
+        body.classList.contains('sidebar-open')) {
+        
+        body.classList.remove('sidebar-open');
+        // Возвращаем иконку кнопки в исходное состояние
+        const icon = sidebarToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
+
 // Обработчики для подменю
 document.querySelectorAll('.submenu-toggle').forEach(toggle => {
     toggle.addEventListener('click', function(e) {
@@ -30,6 +49,7 @@ document.querySelectorAll('.submenu-toggle').forEach(toggle => {
 const menuItems = document.querySelectorAll('.menu-item:not(.has-submenu)');
 const submenuItems = document.querySelectorAll('.submenu-item');
 const contents = document.querySelectorAll('.content');
+const sectionHeader = document.getElementById('current-section');
 
 // Функция для активации раздела
 function activateSection(sectionId) {
@@ -42,14 +62,20 @@ function activateSection(sectionId) {
         contentElement.classList.add('active');
     }
 
+    // Обновляем заголовок раздела
+    sectionHeader.textContent = sectionId;
+
     // Сохраняем активный раздел в localStorage
     localStorage.setItem('activeSection', sectionId);
 }
 
 // Функция для активации группы
 function activateGroup(section, group) {
-    const sectionId = `${section}-${group}`;
-    activateSection(sectionId);
+    const sectionId = `${section} - ${group}`;
+    activateSection(`${section}-${group}`);
+
+    // Обновляем заголовок раздела
+    sectionHeader.textContent = group;
 
     // Сохраняем активную группу в localStorage
     localStorage.setItem('activeGroup', group);
@@ -227,7 +253,7 @@ function showDetailView(key, category, subcategory) {
 function hideDetailView() {
     detailView.classList.add('hidden');
 
-    // Уничтожаем текущий график
+    // Уничтожаем предыдущий график
     if (currentChart) {
         currentChart.destroy();
         currentChart = null;
