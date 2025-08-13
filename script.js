@@ -36,8 +36,18 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// Обработчики для подменю
+document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const menuItem = this.closest('.menu-item');
+        menuItem.classList.toggle('active');
+    });
+});
+
 // Переключение разделов
-const menuItems = document.querySelectorAll('.menu-item');
+const menuItems = document.querySelectorAll('.menu-item:not(.has-submenu)');
+const submenuItems = document.querySelectorAll('.submenu-item');
 const contents = document.querySelectorAll('.content');
 const sectionHeader = document.getElementById('current-section');
 
@@ -59,6 +69,18 @@ function activateSection(sectionId) {
     localStorage.setItem('activeSection', sectionId);
 }
 
+// Функция для активации группы
+function activateGroup(section, group) {
+    const sectionId = `${section}-${group}`;
+    activateSection(sectionId);
+
+    // Обновляем заголовок раздела
+    sectionHeader.textContent = group;
+
+    // Сохраняем активную группу в localStorage
+    localStorage.setItem('activeGroup', group);
+}
+
 // Обработчики для пунктов меню
 menuItems.forEach(item => {
     item.addEventListener('click', function() {
@@ -74,15 +96,38 @@ menuItems.forEach(item => {
     });
 });
 
+// Обработчики для пунктов подменю
+submenuItems.forEach(item => {
+    item.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        const group = this.getAttribute('data-group');
+        activateGroup(section, group);
+
+        // На мобильных устройствах закрываем меню после выбора
+        if (window.innerWidth <= 768) {
+            body.classList.remove('sidebar-open');
+            sidebarToggle.querySelector('i').classList.remove('fa-times');
+            sidebarToggle.querySelector('i').classList.add('fa-bars');
+        }
+    });
+});
+
 // Восстановление активного раздела при загрузке
 document.addEventListener('DOMContentLoaded', () => {
     const savedSection = localStorage.getItem('activeSection');
+    const savedGroup = localStorage.getItem('activeGroup');
 
-    if (savedSection) {
+    if (savedSection && savedGroup) {
+        activateGroup(savedSection, savedGroup);
+    } else if (savedSection) {
         activateSection(savedSection);
     } else {
         // Активируем первый раздел по умолчанию
-        activateSection("Ипотека");
+        const firstSection = document.querySelector('.menu-item');
+        if (firstSection) {
+            const section = firstSection.getAttribute('data-section') || 'Ипотека';
+            activateSection(section);
+        }
     }
 });
 
