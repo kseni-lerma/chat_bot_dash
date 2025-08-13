@@ -85,23 +85,15 @@ body.detail-view-active {
     color: var(--gray);
 }
 
-/* Стиль для заголовков групп */
-.group-title {
-    color: #475569; /* Темно-серый цвет */
+/* Стиль для заголовков категорий */
+.category-title {
+    color: #475569;
     font-size: 1.3rem;
     font-weight: 700;
     padding: 0 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-left: 4px solid var(--primary);
     padding-left: 10px;
-}
-
-/* Стиль для категорий в карточках */
-.kpi-category {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #334155;
-    margin-bottom: 5px;
 }
 
 /* Стиль для пустых разделов */
@@ -306,17 +298,18 @@ body.detail-view-active .sidebar-toggle {
 
 .kpi-header {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 15px;
 }
 
 .kpi-subcategory {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #475569;
-    margin-bottom: 5px;
+    flex: 1;
+    word-break: break-word;
+    white-space: normal;
 }
 
 .kpi-period {
@@ -326,7 +319,7 @@ body.detail-view-active .sidebar-toggle {
     padding: 4px 8px;
     border-radius: 6px;
     font-weight: 500;
-    margin-top: 5px;
+    margin-left: 10px;
     white-space: nowrap;
 }
 
@@ -677,12 +670,8 @@ body.detail-view-active .sidebar-toggle {
         min-width: 0;
     }
 
-    .kpi-category {
-        font-size: 0.95rem;
-    }
-
     .kpi-subcategory {
-        font-size: 0.9rem;
+        font-size: 1rem;
         white-space: normal;
         word-break: break-word;
         overflow: visible;
@@ -740,12 +729,8 @@ body.detail-view-active .sidebar-toggle {
 
     /* Оптимизация для очень маленьких экранов */
     @media (max-width: 360px) {
-        .kpi-category {
-            font-size: 0.9rem;
-        }
-
         .kpi-subcategory {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         .kpi-value {
