@@ -60,9 +60,6 @@ function activateSection(sectionId) {
     const contentElement = document.getElementById(`content-${sectionId}`);
     if (contentElement) {
         contentElement.classList.add('active');
-        
-        // Прокручиваем к началу раздела
-        contentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     
     // Сохраняем активный раздел
@@ -75,7 +72,7 @@ function activateGroup(section, group) {
     activateSection(sectionId);
     
     // Обновляем заголовок раздела
-    sectionHeader.textContent = section;
+    sectionHeader.textContent = `${section} > ${group}`;
     
     // Обновляем активные элементы меню
     activateMenuItems(section, group);
@@ -90,6 +87,7 @@ menuItems.forEach(item => {
     item.addEventListener('click', function() {
         const section = this.getAttribute('data-section');
         activateSection(section);
+        sectionHeader.textContent = section;
 
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
@@ -136,9 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Активируем раздел "Ипотека" и группу "Масштаб рынка" по умолчанию
         activateGroup("Ипотека", "Масштаб рынка");
     }
-    
-    // Убедимся, что заголовок раздела установлен правильно
-    sectionHeader.textContent = localStorage.getItem('activeGroup') || "Масштаб рынка";
     
     // Инициализация обработчиков для кнопок детализации
     document.querySelectorAll('.detail-btn').forEach(btn => {
