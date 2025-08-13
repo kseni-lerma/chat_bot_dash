@@ -75,7 +75,7 @@ function activateGroup(section, group) {
     activateSection(sectionId);
 
     // Обновляем заголовок раздела
-    sectionHeader.textContent = group;
+    sectionHeader.textContent = section;
 
     // Сохраняем активную группу в localStorage
     localStorage.setItem('activeGroup', group);
