@@ -103,8 +103,6 @@ submenuItems.forEach(item => {
         
         // Обновляем заголовок
         sectionHeader.textContent = section;
-    });
-});
 
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
@@ -127,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
         activateGroup("Ипотека", "Масштаб рынка");
     }
 });
-
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
