@@ -72,7 +72,7 @@ body.detail-view-active {
     box-shadow: var(--box-shadow);
 }
 
-.group-header h2 {
+.group-header h1, .group-header h2 {
     font-size: 1.4rem;
     color: var(--dark);
     display: flex;
@@ -80,7 +80,7 @@ body.detail-view-active {
     gap: 8px;
 }
 
-.group-header h2 i {
+.group-header h1 i, .group-header h2 i {
     font-size: 1rem;
     color: var(--gray);
 }
