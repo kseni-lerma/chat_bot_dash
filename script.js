@@ -486,8 +486,8 @@ function renderStandardChart(data, isPremiumMortgage) {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
+            responsive: true;
+            maintainAspectRatio: false;
             layout: {
                 padding: {
                     top: 10,
@@ -624,8 +624,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
@@ -727,8 +727,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
