@@ -122,11 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (savedSection) {
         activateSection(savedSection);
     } else {
-        // Всегда открываем "Масштаб Рынка и Институты" по умолчанию
-        activateGroup('Ипотека', 'Масштаб Рынка и Институты');
+        // Активируем первый раздел по умолчанию
+        const firstSection = document.querySelector('.menu-item');
+        if (firstSection) {
+            const section = firstSection.getAttribute('data-section') || 'Ипотека';
+            activateSection(section);
+        }
     }
 });
-
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
