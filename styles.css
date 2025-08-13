@@ -124,10 +124,7 @@ body.detail-view-active {
     font-weight: 600;
 }
 
-.sidebar-toggle:hover {
-    background: white;
-    color: var(--primary);
-}
+
 
 body.sidebar-open .sidebar-toggle {
     background: rgba(255,255,255,0.2);
