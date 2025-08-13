@@ -71,13 +71,11 @@ function activateSection(sectionId) {
 
 // Функция для активации группы
 function activateGroup(section, group) {
-    const sectionId = `${section}-${group}`;
-    activateSection(sectionId);
-
-    // Обновляем заголовок раздела
-    sectionHeader.textContent = section;
-
+    const contentId = `content-${section}-${group}`;
+    activateSection(contentId);
+    
     // Сохраняем активную группу в localStorage
+    localStorage.setItem('activeSection', section);
     localStorage.setItem('activeGroup', group);
 }
 
@@ -102,6 +100,11 @@ submenuItems.forEach(item => {
         const section = this.getAttribute('data-section');
         const group = this.getAttribute('data-group');
         activateGroup(section, group);
+        
+        // Обновляем заголовок
+        sectionHeader.textContent = section;
+    });
+});
 
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
@@ -120,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else {
-        // Активируем группу "Масштаб рынка" по умолчанию
+        // Всегда активируем "Масштаб рынка" при первой загрузке
         activateGroup("Ипотека", "Масштаб рынка");
     }
 });
