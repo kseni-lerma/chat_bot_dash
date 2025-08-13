@@ -55,29 +55,32 @@ const sectionHeader = document.getElementById('current-section');
 function activateSection(sectionId) {
     // Скрываем все контенты
     contents.forEach(c => c.classList.remove('active'));
-
+    
     // Показываем выбранный контент
     const contentElement = document.getElementById(`content-${sectionId}`);
     if (contentElement) {
         contentElement.classList.add('active');
+        
+        // Прокручиваем к началу раздела
+        contentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-
-    // Обновляем заголовок раздела
-    sectionHeader.textContent = sectionId;
-
-    // Сохраняем активный раздел в localStorage
+    
+    // Сохраняем активный раздел
     localStorage.setItem('activeSection', sectionId);
 }
 
-// Функция для активации группы
 function activateGroup(section, group) {
     const sectionId = `${section}-${group}`;
     activateSection(sectionId);
-
+    
     // Обновляем заголовок раздела
-    sectionHeader.textContent = section;
-
-    // Сохраняем активную группу в localStorage
+    sectionHeader.textContent = group;
+    
+    // Обновляем активные элементы меню
+    activateMenuItems(section, group);
+    
+    // Сохраняем активную группу
+    localStorage.setItem('activeSection', section);
     localStorage.setItem('activeGroup', group);
 }
 
@@ -102,13 +105,21 @@ submenuItems.forEach(item => {
         const section = this.getAttribute('data-section');
         const group = this.getAttribute('data-group');
         activateGroup(section, group);
-
+        
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
             body.classList.remove('sidebar-open');
             sidebarToggle.querySelector('i').classList.remove('fa-times');
             sidebarToggle.querySelector('i').classList.add('fa-bars');
         }
+        
+        // Убираем классы активности со всех пунктов
+        document.querySelectorAll('.menu-item, .submenu-item').forEach(el => {
+            el.classList.remove('active');
+        });
+        
+        // Активируем текущие пункты
+        activateMenuItems(section, group);
     });
 });
 
@@ -122,6 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Активируем группу "Масштаб рынка" по умолчанию
         activateGroup("Ипотека", "Масштаб рынка");
+        
+        // Добавляем классы активности для элементов меню
+        activateMenuItems("Ипотека", "Масштаб рынка");
     }
     
     // Инициализация обработчиков для кнопок детализации
@@ -143,6 +157,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Функция для активации соответствующих пунктов меню
+function activateMenuItems(section, group) {
+    // Находим основной пункт меню
+    const mainMenuItem = document.querySelector(`.menu-item[data-section="${section}"]`);
+    if (mainMenuItem) {
+        mainMenuItem.classList.add('active');
+        
+        // Раскрываем подменю если нужно
+        const submenuToggle = mainMenuItem.querySelector('.submenu-toggle');
+        if (submenuToggle) {
+            mainMenuItem.classList.add('active');
+        }
+    }
+    
+    // Находим пункт подменю
+    const submenuItem = document.querySelector(`.submenu-item[data-section="${section}"][data-group="${group}"]`);
+    if (submenuItem) {
+        submenuItem.classList.add('active');
+    }
+}
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
