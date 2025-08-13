@@ -196,6 +196,7 @@ body.detail-view-active .sidebar-toggle {
 
 .menu-item:hover, 
 .menu-item.active,
+.menu-main-item.active,
 .menu-main-item:hover {
     background: rgba(255,255,255,0.15);
     border-left: 4px solid white;
