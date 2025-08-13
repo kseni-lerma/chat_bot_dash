@@ -64,12 +64,44 @@ body.detail-view-active {
     color: var(--secondary);
 }
 
-/* Стиль для заголовков категорий */
-.category-title {
-    color: #64748b; /* Серый цвет */
-    font-size: 1.2rem;
+.group-header {
+    background: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.group-header h2 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.group-header h2 i {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+/* Стиль для заголовков групп */
+.group-title {
+    color: #475569; /* Темно-серый цвет */
+    font-size: 1.3rem;
+    font-weight: 700;
     padding: 0 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+}
+
+/* Стиль для категорий в карточках */
+.kpi-category {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 5px;
 }
 
 /* Стиль для пустых разделов */
@@ -274,18 +306,17 @@ body.detail-view-active .sidebar-toggle {
 
 .kpi-header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 15px;
 }
 
 .kpi-subcategory {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
     color: #475569;
-    flex: 1;
-    word-break: break-word;
-    white-space: normal;
+    margin-bottom: 5px;
 }
 
 .kpi-period {
@@ -295,7 +326,7 @@ body.detail-view-active .sidebar-toggle {
     padding: 4px 8px;
     border-radius: 6px;
     font-weight: 500;
-    margin-left: 10px;
+    margin-top: 5px;
     white-space: nowrap;
 }
 
@@ -646,8 +677,12 @@ body.detail-view-active .sidebar-toggle {
         min-width: 0;
     }
 
+    .kpi-category {
+        font-size: 0.95rem;
+    }
+
     .kpi-subcategory {
-        font-size: 1rem;
+        font-size: 0.9rem;
         white-space: normal;
         word-break: break-word;
         overflow: visible;
@@ -705,8 +740,12 @@ body.detail-view-active .sidebar-toggle {
 
     /* Оптимизация для очень маленьких экранов */
     @media (max-width: 360px) {
-        .kpi-subcategory {
+        .kpi-category {
             font-size: 0.9rem;
+        }
+
+        .kpi-subcategory {
+            font-size: 0.85rem;
         }
 
         .kpi-value {
