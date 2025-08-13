@@ -116,20 +116,23 @@ submenuItems.forEach(item => {
 document.addEventListener('DOMContentLoaded', () => {
     const savedSection = localStorage.getItem('activeSection');
     const savedGroup = localStorage.getItem('activeGroup');
-
+    
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
-    } else if (savedSection) {
-        activateSection(savedSection);
     } else {
-        // Активируем первый раздел по умолчанию
+        // Активируем первую группу первого раздела
         const firstSection = document.querySelector('.menu-item');
         if (firstSection) {
-            const section = firstSection.getAttribute('data-section') || 'Ипотека';
-            activateSection(section);
+            const section = firstSection.getAttribute('data-section');
+            const firstGroup = firstSection.querySelector('.submenu-item');
+            if (firstGroup) {
+                const group = firstGroup.getAttribute('data-group');
+                activateGroup(section, group);
+            }
         }
     }
 });
+
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
