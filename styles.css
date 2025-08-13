@@ -64,6 +64,27 @@ body.detail-view-active {
     color: var(--secondary);
 }
 
+.group-header {
+    background: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.group-header h1, .group-header h2 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.group-header h1 i, .group-header h2 i {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
 /* Стиль для заголовков категорий */
 .category-title {
     color: #475569;
@@ -124,7 +145,10 @@ body.detail-view-active {
     font-weight: 600;
 }
 
-
+.sidebar-toggle:hover {
+    background: white;
+    color: var(--primary);
+}
 
 body.sidebar-open .sidebar-toggle {
     background: rgba(255,255,255,0.2);
