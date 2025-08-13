@@ -114,19 +114,12 @@ submenuItems.forEach(item => {
 
 // Восстановление активного раздела при загрузке
 document.addEventListener('DOMContentLoaded', () => {
-    const savedSection = localStorage.getItem('activeSection');
-    const savedGroup = localStorage.getItem('activeGroup');
-
-    if (savedSection && savedGroup) {
-        activateGroup(savedSection, savedGroup);
-    } else if (savedSection) {
-        activateSection(savedSection);
-    } else {
-        // Всегда открываем "Масштаб Рынка и Институты" по умолчанию
-        activateGroup('Ипотека', 'Масштаб Рынка и Институты');
-    }
+    // Всегда открываем "Масштаб Рынка и Институты" по умолчанию
+    activateGroup('Ипотека', 'Масштаб Рынка и Институты');
+    
+    // Обновляем заголовок раздела
+    sectionHeader.textContent = 'Масштаб Рынка и Институты';
 });
-
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
