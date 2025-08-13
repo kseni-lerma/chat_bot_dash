@@ -71,7 +71,7 @@ function activateSection(sectionId) {
 
 // Функция для активации группы
 function activateGroup(section, group) {
-    const sectionId = `${section}`;
+    const sectionId = ``;
     activateSection(sectionId);
 
 
