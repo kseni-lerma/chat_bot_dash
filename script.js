@@ -23,11 +23,11 @@ document.addEventListener('click', function(event) {
     const sidebarToggle = document.querySelector('.sidebar-toggle');
 
     // Если клик был не по боковому меню и не по кнопке переключения меню, и меню открыто
-    if (!sidebar.contains(event.target) && 
-        event.target !== sidebarToggle && 
-        !sidebarToggle.contains(event.target) && 
+    if (!sidebar.contains(event.target) &&
+        event.target !== sidebarToggle &&
+        !sidebarToggle.contains(event.target) &&
         body.classList.contains('sidebar-open')) {
-        
+
         body.classList.remove('sidebar-open');
         // Возвращаем иконку кнопки в исходное состояние
         const icon = sidebarToggle.querySelector('i');
@@ -122,14 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (savedSection) {
         activateSection(savedSection);
     } else {
-        // Активируем первый раздел по умолчанию
-        const firstSection = document.querySelector('.menu-item');
-        if (firstSection) {
-            const section = firstSection.getAttribute('data-section') || 'Ипотека';
-            activateSection(section);
-        }
+        // Всегда открываем "Масштаб Рынка и Институты" по умолчанию
+        activateGroup('Ипотека', 'Масштаб Рынка и Институты');
     }
 });
+
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
