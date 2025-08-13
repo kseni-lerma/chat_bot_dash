@@ -71,11 +71,11 @@ function activateSection(sectionId) {
 
 // Функция для активации группы
 function activateGroup(section, group) {
-    const sectionId = `${section}`;
+    const sectionId = `${section} -> ${group}`;
     activateSection(sectionId);
 
     // Обновляем заголовок раздела
-    // sectionHeader.textContent = `${section} -> ${group}`;
+    sectionHeader.textContent = `${section} -> ${group}`;
 
     // Сохраняем активную группу в localStorage
     localStorage.setItem('activeGroup', group);
