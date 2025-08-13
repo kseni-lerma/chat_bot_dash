@@ -5,7 +5,7 @@ const body = document.body;
 
 sidebarToggle.addEventListener('click', () => {
     body.classList.toggle('sidebar-open');
-
+    
     // Обновляем иконку
     const icon = sidebarToggle.querySelector('i');
     if (body.classList.contains('sidebar-open')) {
@@ -123,6 +123,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // Активируем группу "Масштаб рынка" по умолчанию
         activateGroup("Ипотека", "Масштаб рынка");
     }
+    
+    // Инициализация обработчиков для кнопок детализации
+    document.querySelectorAll('.detail-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const key = this.getAttribute('data-key');
+            const category = this.getAttribute('data-category');
+            const subcategory = this.getAttribute('data-subcategory');
+
+            // Сохраняем название показателя
+            currentIndicatorName = `${category} - ${subcategory}`;
+
+            // Показываем экран детализации
+            showDetailView(key, category, subcategory);
+
+            // Разворачиваем на весь экран
+            body.classList.add('detail-view-active');
+        });
+    });
 });
 
 
@@ -149,24 +167,6 @@ let currentUnit = '';
 let updateTimeout = null;
 let isQuarterlyData = false; // Флаг для квартальных данных
 let currentIndicatorName = ''; // Название текущего показателя
-
-// Обработчики для кнопок детализации
-document.querySelectorAll('.detail-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const key = this.getAttribute('data-key');
-        const category = this.getAttribute('data-category');
-        const subcategory = this.getAttribute('data-subcategory');
-
-        // Сохраняем название показателя
-        currentIndicatorName = `${category} - ${subcategory}`;
-
-        // Показываем экран детализации
-        showDetailView(key, category, subcategory);
-
-        // Разворачиваем на весь экран
-        body.classList.add('detail-view-active');
-    });
-});
 
 // Обработчик для кнопки "Назад"
 backBtn.addEventListener('click', function() {
@@ -481,8 +481,8 @@ function renderStandardChart(data, isPremiumMortgage) {
             }]
         },
         options: {
-            responsive: true;
-            maintainAspectRatio: false;
+            responsive: true,
+            maintainAspectRatio: false,
             layout: {
                 padding: {
                     top: 10,
@@ -619,8 +619,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true;
-                maintainAspectRatio: false;
+                responsive: true,
+                maintainAspectRatio: false,
                 layout: {
                     padding: {
                         top: 10,
@@ -722,8 +722,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true;
-                maintainAspectRatio: false;
+                responsive: true,
+                maintainAspectRatio: false,
                 layout: {
                     padding: {
                         top: 10,
