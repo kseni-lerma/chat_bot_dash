@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else {
-        // Активируем группу "Масштаб рынка" по умолчанию
-        activateGroup("Ипотека", "Масштаб рынка");
+        // Активируем раздел "Ипотека" и группу "Масштаб рынка" по умолчанию
+        activateSection("Ипотека");
     }
 });
 
