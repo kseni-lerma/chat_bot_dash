@@ -64,20 +64,8 @@ body.detail-view-active {
     color: var(--secondary);
 }
 
-/* Новый стиль для заголовка раздела */
-.section-title {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.section-title h2 {
-    font-size: 1.8rem;
-    color: #333; /* Темно-серый цвет */
-    font-weight: 600;
-}
-
-/* Стиль для подзаголовков категорий */
-.category-subtitle {
+/* Стиль для заголовков категорий */
+.category-title {
     color: #64748b; /* Серый цвет */
     font-size: 1.2rem;
     padding: 0 15px;
@@ -169,14 +157,64 @@ body.detail-view-active .sidebar-toggle {
     cursor: pointer;
     transition: var(--transition);
     position: relative;
+}
+
+.menu-item.has-submenu {
+    padding: 0;
+}
+
+.menu-item.has-submenu > .menu-main-item {
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.menu-item i, .menu-main-item i {
+    width: 24px;
+    text-align: center;
+}
+
+.menu-item:hover, .menu-item.active,
+.menu-main-item:hover {
+    background: rgba(255,255,255,0.15);
+    border-left: 4px solid white;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    background: rgba(0,0,0,0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.menu-item.active .submenu {
+    max-height: 1000px;
+}
+
+.submenu-item {
+    padding: 10px 25px 10px 50px;
+    cursor: pointer;
+    transition: var(--transition);
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.menu-item:hover, .menu-item.active {
-    background: rgba(255,255,255,0.15);
-    border-left: 4px solid white;
+.submenu-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.submenu-toggle {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.menu-item.active .submenu-toggle {
+    transform: rotate(180deg);
 }
 
 /* Переключение вкладок */
