@@ -577,20 +577,20 @@ body.detail-view-active .sidebar-toggle {
 
 /* Стили для разделителей таблицы */
 .section-header {
-    /*background-color: #f1f5f9 !important;/*
+    background-color: #f1f5f9 !important;
     font-weight: bold;
 }
 
 .section-header td {
     padding: 15px !important;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     border-bottom: 2px solid #cbd5e1;
     border-top: 2px solid #cbd5e1;
 }
 
 .detail-table tr.section-header:hover {
-   /* background-color: #f1f5f9 !important;/*
+    background-color: #f1f5f9 !important;
 }
 
 /* Адаптивность */
