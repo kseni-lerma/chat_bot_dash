@@ -69,12 +69,15 @@ function activateSection(sectionId) {
     localStorage.setItem('activeSection', sectionId);
 }
 
+
+
+// Функция для активации группы
 function activateGroup(section, group) {
     const sectionId = `${section}-${group}`;
     activateSection(sectionId);
     
     // Обновляем заголовок раздела
-    sectionHeader.textContent = group;
+    sectionHeader.textContent = section;
     
     // Обновляем активные элементы меню
     activateMenuItems(section, group);
@@ -83,6 +86,9 @@ function activateGroup(section, group) {
     localStorage.setItem('activeSection', section);
     localStorage.setItem('activeGroup', group);
 }
+
+
+
 
 // Обработчики для пунктов меню
 menuItems.forEach(item => {
@@ -128,15 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedSection = localStorage.getItem('activeSection');
     const savedGroup = localStorage.getItem('activeGroup');
     
+    // Проверяем наличие сохраненных данных
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else {
-        // Активируем группу "Масштаб рынка" по умолчанию
+        // Активируем раздел "Ипотека" и группу "Масштаб рынка" по умолчанию
         activateGroup("Ипотека", "Масштаб рынка");
-        
-        // Добавляем классы активности для элементов меню
-        activateMenuItems("Ипотека", "Масштаб рынка");
     }
+    
+    // Убедимся, что заголовок раздела установлен правильно
+    sectionHeader.textContent = localStorage.getItem('activeGroup') || "Масштаб рынка";
     
     // Инициализация обработчиков для кнопок детализации
     document.querySelectorAll('.detail-btn').forEach(btn => {
