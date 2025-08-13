@@ -69,8 +69,6 @@ function activateSection(sectionId) {
     localStorage.setItem('activeSection', sectionId);
 }
 
-
-
 // Функция для активации группы
 function activateGroup(section, group) {
     const sectionId = `${section}-${group}`;
@@ -86,9 +84,6 @@ function activateGroup(section, group) {
     localStorage.setItem('activeSection', section);
     localStorage.setItem('activeGroup', group);
 }
-
-
-
 
 // Обработчики для пунктов меню
 menuItems.forEach(item => {
