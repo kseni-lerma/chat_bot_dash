@@ -146,8 +146,8 @@ body.detail-view-active {
 }
 
 .sidebar-toggle:hover {
-    background: white;
-    color: var(--primary);
+    background: linear-gradient(135deg, #4a67d8, #5e4fc9);
+    color: white;
 }
 
 body.sidebar-open .sidebar-toggle {
