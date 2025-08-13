@@ -71,11 +71,13 @@ function activateSection(sectionId) {
 
 // Функция для активации группы
 function activateGroup(section, group) {
-    const contentId = `content-${section}-${group}`;
-    activateSection(contentId);
-    
+    const sectionId = `${section}-${group}`;
+    activateSection(sectionId);
+
+    // Обновляем заголовок раздела
+    sectionHeader.textContent = group;
+
     // Сохраняем активную группу в localStorage
-    localStorage.setItem('activeSection', section);
     localStorage.setItem('activeGroup', group);
 }
 
@@ -100,11 +102,6 @@ submenuItems.forEach(item => {
         const section = this.getAttribute('data-section');
         const group = this.getAttribute('data-group');
         activateGroup(section, group);
-        
-        // Обновляем заголовок
-        sectionHeader.textContent = section;
-    });
-});
 
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
@@ -123,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else {
-        // Всегда активируем "Масштаб рынка" при первой загрузке
+        // Активируем группу "Масштаб рынка" по умолчанию
         activateGroup("Ипотека", "Масштаб рынка");
     }
 });
@@ -484,8 +481,8 @@ function renderStandardChart(data, isPremiumMortgage) {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
+            responsive: true;
+            maintainAspectRatio: false;
             layout: {
                 padding: {
                     top: 10,
@@ -622,8 +619,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
@@ -725,8 +722,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
