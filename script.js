@@ -120,16 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedSection && savedGroup) {
         activateGroup(savedSection, savedGroup);
     } else {
-        // Активируем первую группу первого раздела
-        const firstSection = document.querySelector('.menu-item');
-        if (firstSection) {
-            const section = firstSection.getAttribute('data-section');
-            const firstGroup = firstSection.querySelector('.submenu-item');
-            if (firstGroup) {
-                const group = firstGroup.getAttribute('data-group');
-                activateGroup(section, group);
-            }
-        }
+        // Активируем группу "Масштаб рынка" по умолчанию
+        activateGroup("Ипотека", "Масштаб рынка");
     }
 });
 
@@ -489,8 +481,8 @@ function renderStandardChart(data, isPremiumMortgage) {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
+            responsive: true;
+            maintainAspectRatio: false;
             layout: {
                 padding: {
                     top: 10,
@@ -627,8 +619,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
@@ -730,8 +722,8 @@ function renderPremiumMortgageChart(data) {
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true;
+                maintainAspectRatio: false;
                 layout: {
                     padding: {
                         top: 10,
