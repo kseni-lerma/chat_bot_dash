@@ -69,17 +69,6 @@ body.detail-view-active {
     letter-spacing: -0.3px;
 }
 
-/* Тонкая подчеркивающая линия */
-.section-header h1::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, #475569, transparent 80%);
-    border-radius: 1px;
-}
 
 
 /* Стиль для заголовков категорий */
