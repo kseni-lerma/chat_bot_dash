@@ -124,17 +124,8 @@ submenuItems.forEach(item => {
 
 // Восстановление активного раздела при загрузке
 document.addEventListener('DOMContentLoaded', () => {
-    const savedSection = localStorage.getItem('activeSection');
-    const savedGroup = localStorage.getItem('activeGroup');
-    
-    // Проверяем наличие сохраненных данных
-    if (savedSection && savedGroup) {
-        activateGroup(savedSection, savedGroup);
-    } else {
-        // Активируем раздел "Ипотека" и группу "Масштаб рынка" по умолчанию
-        activateGroup("Ипотека", "Масштаб рынка");
-        sectionHeader.textContent = "Ипотека > Масштаб рынка";  // Добавьте эту строку
-    }
+    // Всегда активируем раздел "Ипотека" и группу "Масштаб рынка" при загрузке
+    activateGroup("Ипотека", "Масштаб рынка");
     
     // Инициализация обработчиков для кнопок детализации
     document.querySelectorAll('.detail-btn').forEach(btn => {
