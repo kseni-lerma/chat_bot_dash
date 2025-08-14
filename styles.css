@@ -51,42 +51,36 @@ body.detail-view-active {
     margin: 0 auto;
 }
 
+/* Обновленные стили для шапки */
 .section-header {
-    padding: 22px 0;
-    margin-bottom: 30px;
+    padding: 0;
+    margin: 0 0 15px 0;
     position: relative;
 }
 
 .section-header h1 {
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: #334155;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #475569; /* Серый цвет */
+    padding: 0 0 10px 0;
+    margin: 0 0 0 15px; /* Выравниваем с padding карточек */
     position: relative;
-    padding-left: 20px;
+    display: inline-block;
+    letter-spacing: -0.3px;
 }
 
-.section-header h1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    background: transparent;
-    border-radius: 50%;
-}
-
-.section-header::after {
+/* Тонкая подчеркивающая линия */
+.section-header h1::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 1px;
-    background: transparent;
+    height: 2px;
+    background: linear-gradient(to right, #5a7ae9, transparent 80%);
+    border-radius: 1px;
 }
+
 
 /* Стиль для заголовков категорий */
 .category-title {
@@ -584,7 +578,7 @@ body.detail-view-active .sidebar-toggle {
 
 /* Стили для разделителей таблицы */
 .section-header {
-    background-color: #f1f5f9 !important;
+    background-color: transparent !important;
     font-weight: bold;
 }
 
