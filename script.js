@@ -5,7 +5,7 @@ const body = document.body;
 
 sidebarToggle.addEventListener('click', () => {
     body.classList.toggle('sidebar-open');
-    
+
     // Обновляем иконку
     const icon = sidebarToggle.querySelector('i');
     if (body.classList.contains('sidebar-open')) {
@@ -23,11 +23,11 @@ document.addEventListener('click', function(event) {
     const sidebarToggle = document.querySelector('.sidebar-toggle');
 
     // Если клик был не по боковому меню и не по кнопке переключения меню, и меню открыто
-    if (!sidebar.contains(event.target) && 
-        event.target !== sidebarToggle && 
-        !sidebarToggle.contains(event.target) && 
+    if (!sidebar.contains(event.target) &&
+        event.target !== sidebarToggle &&
+        !sidebarToggle.contains(event.target) &&
         body.classList.contains('sidebar-open')) {
-        
+
         body.classList.remove('sidebar-open');
         // Возвращаем иконку кнопки в исходное состояние
         const icon = sidebarToggle.querySelector('i');
@@ -55,13 +55,13 @@ const sectionHeader = document.getElementById('current-section');
 function activateSection(sectionId) {
     // Скрываем все контенты
     contents.forEach(c => c.classList.remove('active'));
-    
+
     // Показываем выбранный контент
     const contentElement = document.getElementById(`content-${sectionId}`);
     if (contentElement) {
         contentElement.classList.add('active');
     }
-    
+
     // Сохраняем активный раздел
     localStorage.setItem('activeSection', sectionId);
 }
@@ -70,13 +70,13 @@ function activateSection(sectionId) {
 function activateGroup(section, group) {
     const sectionId = `${section}-${group}`;
     activateSection(sectionId);
-    
+
     // Обновляем заголовок раздела
     sectionHeader.textContent = `${section} > ${group}`;
-    
+
     // Обновляем активные элементы меню
     activateMenuItems(section, group);
-    
+
     // Сохраняем активную группу
     localStorage.setItem('activeSection', section);
     localStorage.setItem('activeGroup', group);
@@ -104,19 +104,19 @@ submenuItems.forEach(item => {
         const section = this.getAttribute('data-section');
         const group = this.getAttribute('data-group');
         activateGroup(section, group);
-        
+
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
             body.classList.remove('sidebar-open');
             sidebarToggle.querySelector('i').classList.remove('fa-times');
             sidebarToggle.querySelector('i').classList.add('fa-bars');
         }
-        
+
         // Убираем классы активности со всех пунктов
         document.querySelectorAll('.menu-item, .submenu-item').forEach(el => {
             el.classList.remove('active');
         });
-        
+
         // Активируем текущие пункты
         activateMenuItems(section, group);
     });
@@ -126,7 +126,7 @@ submenuItems.forEach(item => {
 document.addEventListener('DOMContentLoaded', () => {
     // Всегда активируем раздел "Ипотека" и группу "Масштаб рынка" при загрузке
     activateGroup("Ипотека", "Масштаб рынка");
-    
+
     // Инициализация обработчиков для кнопок детализации
     document.querySelectorAll('.detail-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -152,14 +152,14 @@ function activateMenuItems(section, group) {
     const mainMenuItem = document.querySelector(`.menu-item[data-section="${section}"]`);
     if (mainMenuItem) {
         mainMenuItem.classList.add('active');
-        
+
         // Раскрываем подменю если нужно
         const submenuToggle = mainMenuItem.querySelector('.submenu-toggle');
         if (submenuToggle) {
             mainMenuItem.classList.add('active');
         }
     }
-    
+
     // Находим пункт подменю
     const submenuItem = document.querySelector(`.submenu-item[data-section="${section}"][data-group="${group}"]`);
     if (submenuItem) {
