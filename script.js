@@ -17,77 +17,28 @@ sidebarToggle.addEventListener('click', () => {
     }
 });
 
-// Закрытие меню при клике вне области
-document.addEventListener('click', function(event) {
-    const sidebar = document.querySelector('.sidebar');
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
-
-    // Если клик был не по боковому меню и не по кнопке переключения меню, и меню открыто
-    if (!sidebar.contains(event.target) &&
-        event.target !== sidebarToggle &&
-        !sidebarToggle.contains(event.target) &&
-        body.classList.contains('sidebar-open')) {
-
-        body.classList.remove('sidebar-open');
-        // Возвращаем иконку кнопки в исходное состояние
-        const icon = sidebarToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
-
-// Обработчики для подменю
-document.querySelectorAll('.submenu-toggle').forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const menuItem = this.closest('.menu-item');
-        menuItem.classList.toggle('active');
-    });
-});
-
-// Переключение разделов
-const menuItems = document.querySelectorAll('.menu-item:not(.has-submenu)');
-const submenuItems = document.querySelectorAll('.submenu-item');
+// Переключение вкладок
+const menuItems = document.querySelectorAll('.menu-item');
 const contents = document.querySelectorAll('.content');
-const sectionHeader = document.getElementById('current-section');
+const currentTabElement = document.getElementById('current-tab');
 
-// Функция для активации раздела
-function activateSection(sectionId) {
-    // Скрываем все контенты
-    contents.forEach(c => c.classList.remove('active'));
-
-    // Показываем выбранный контент
-    const contentElement = document.getElementById(`content-${sectionId}`);
-    if (contentElement) {
-        contentElement.classList.add('active');
-    }
-
-    // Сохраняем активный раздел
-    localStorage.setItem('activeSection', sectionId);
-}
-
-// Функция для активации группы
-function activateGroup(section, group) {
-    const sectionId = `${section}-${group}`;
-    activateSection(sectionId);
-
-    // Обновляем заголовок раздела
-    sectionHeader.textContent = `${section} > ${group}`;
-
-    // Обновляем активные элементы меню
-    activateMenuItems(section, group);
-
-    // Сохраняем активную группу
-    localStorage.setItem('activeSection', section);
-    localStorage.setItem('activeGroup', group);
-}
-
-// Обработчики для пунктов меню
 menuItems.forEach(item => {
     item.addEventListener('click', function() {
-        const section = this.getAttribute('data-section');
-        activateSection(section);
-        sectionHeader.textContent = section;
+        const tabId = this.getAttribute('data-tab');
+        const tabName = this.querySelector('span').textContent;
+
+        // Обновляем название текущей вкладки
+        currentTabElement.textContent = tabName;
+
+        // Убираем активный класс у всех пунктов меню
+        menuItems.forEach(i => i.classList.remove('active'));
+        // Добавляем активный класс текущему пункту
+        this.classList.add('active');
+
+        // Скрываем все вкладки контента
+        contents.forEach(c => c.classList.remove('active'));
+        // Показываем выбранную вкладку
+        document.getElementById(tabId).classList.add('active');
 
         // На мобильных устройствах закрываем меню после выбора
         if (window.innerWidth <= 768) {
@@ -97,75 +48,6 @@ menuItems.forEach(item => {
         }
     });
 });
-
-// Обработчики для пунктов подменю
-submenuItems.forEach(item => {
-    item.addEventListener('click', function() {
-        const section = this.getAttribute('data-section');
-        const group = this.getAttribute('data-group');
-        activateGroup(section, group);
-
-        // На мобильных устройствах закрываем меню после выбора
-        if (window.innerWidth <= 768) {
-            body.classList.remove('sidebar-open');
-            sidebarToggle.querySelector('i').classList.remove('fa-times');
-            sidebarToggle.querySelector('i').classList.add('fa-bars');
-        }
-
-        // Убираем классы активности со всех пунктов
-        document.querySelectorAll('.menu-item, .submenu-item').forEach(el => {
-            el.classList.remove('active');
-        });
-
-        // Активируем текущие пункты
-        activateMenuItems(section, group);
-    });
-});
-
-// Восстановление активного раздела при загрузке
-document.addEventListener('DOMContentLoaded', () => {
-    // Всегда активируем раздел "Ипотека" и группу "Масштаб рынка" при загрузке
-    activateGroup("Ипотека", "Масштаб рынка");
-
-    // Инициализация обработчиков для кнопок детализации
-    document.querySelectorAll('.detail-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const key = this.getAttribute('data-key');
-            const category = this.getAttribute('data-category');
-            const subcategory = this.getAttribute('data-subcategory');
-
-            // Сохраняем название показателя
-            currentIndicatorName = `${category} - ${subcategory}`;
-
-            // Показываем экран детализации
-            showDetailView(key, category, subcategory);
-
-            // Разворачиваем на весь экран
-            body.classList.add('detail-view-active');
-        });
-    });
-});
-
-// Функция для активации соответствующих пунктов меню
-function activateMenuItems(section, group) {
-    // Находим основной пункт меню
-    const mainMenuItem = document.querySelector(`.menu-item[data-section="${section}"]`);
-    if (mainMenuItem) {
-        mainMenuItem.classList.add('active');
-
-        // Раскрываем подменю если нужно
-        const submenuToggle = mainMenuItem.querySelector('.submenu-toggle');
-        if (submenuToggle) {
-            mainMenuItem.classList.add('active');
-        }
-    }
-
-    // Находим пункт подменю
-    const submenuItem = document.querySelector(`.submenu-item[data-section="${section}"][data-group="${group}"]`);
-    if (submenuItem) {
-        submenuItem.classList.add('active');
-    }
-}
 
 // Детализация показателей
 const detailView = document.getElementById('detail-view');
@@ -191,12 +73,24 @@ let updateTimeout = null;
 let isQuarterlyData = false; // Флаг для квартальных данных
 let currentIndicatorName = ''; // Название текущего показателя
 
+// Обработчики для кнопок детализации
+document.querySelectorAll('.detail-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const key = this.getAttribute('data-key');
+        const category = this.getAttribute('data-category');
+        const subcategory = this.getAttribute('data-subcategory');
+
+        // Сохраняем название показателя
+        currentIndicatorName = `${category} - ${subcategory}`;
+
+        // Показываем экран детализации
+        showDetailView(key, category, subcategory);
+    });
+});
+
 // Обработчик для кнопки "Назад"
 backBtn.addEventListener('click', function() {
     hideDetailView();
-
-    // Возвращаемся к обычному виду
-    body.classList.remove('detail-view-active');
 });
 
 // Автоматическое обновление при изменении дат
@@ -264,14 +158,16 @@ function showDetailView(key, category, subcategory) {
     updateDetailView();
 
     // Показываем экран детализации
+    body.classList.add('detail-view-active');
     detailView.classList.remove('hidden');
 }
 
 // Скрыть экран детализации
 function hideDetailView() {
+    body.classList.remove('detail-view-active');
     detailView.classList.add('hidden');
 
-    // Уничтожаем предыдущий график
+    // Уничтожаем текущий график
     if (currentChart) {
         currentChart.destroy();
         currentChart = null;
