@@ -81,6 +81,9 @@ body.detail-view-active {
     padding: 40px;
     font-size: 1.2rem;
     color: var(--gray);
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 /* Стили бокового меню */
