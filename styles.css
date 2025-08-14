@@ -52,15 +52,30 @@ body.detail-view-active {
 }
 
 .section-header {
-    padding: 15px 20px;
-    background: transparent;
-    border-radius: var(--border-radius);
-    margin-bottom: 20px;
+    padding: 25px 0 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .section-header h1 {
-    font-size: 1.6rem;
-    color: #475569;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #334155;
+    position: relative;
+    padding-bottom: 12px;
+    display: inline-block;
+    letter-spacing: -0.3px;
+}
+
+.section-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: #5a7ae9;
+    border-radius: 3px;
 }
 
 /* Стиль для заголовков категорий */
