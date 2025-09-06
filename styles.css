@@ -51,25 +51,46 @@ body.detail-view-active {
     margin: 0 auto;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
+/* Обновленные стили для шапки */
+.section-header {
+    padding-battom: 5px;
+    margin: 0 0 15px 0;
     position: relative;
 }
 
-.header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-weight: 800;
+.section-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #475569; /* Серый цвет */
+    padding: 0 0 10px 0;
+    margin: 0 0 0 15px; /* Выравниваем с padding карточек */
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.3px;
+}
+
+
+
+/* Стиль для заголовков категорий */
+.category-title {
+    color: #475569;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+}
+
+/* Стиль для пустых разделов */
+.empty-section {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: var(--gray);
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 /* Стили бокового меню */
@@ -113,10 +134,7 @@ body.detail-view-active {
     font-weight: 600;
 }
 
-.sidebar-toggle:hover {
-    background: white;
-    color: var(--primary);
-}
+
 
 body.sidebar-open .sidebar-toggle {
     background: rgba(255,255,255,0.2);
@@ -148,24 +166,68 @@ body.detail-view-active .sidebar-toggle {
     padding: 12px 25px;
     cursor: pointer;
     transition: var(--transition);
+    position: relative;
+}
+
+.menu-item.has-submenu {
+    padding: 0;
+}
+
+.menu-item.has-submenu > .menu-main-item {
+    padding: 12px 25px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
-    font-size: 1.05rem;
-    font-weight: 500;
 }
 
-.menu-item:hover, .menu-item.active {
-    background: rgba(255,255,255,0.15);
-    border-left: 4px solid white;
-}
-
-.menu-item i {
+.menu-item i, .menu-main-item i {
     width: 24px;
     text-align: center;
 }
 
-/* Стили контента */
+.menu-item:hover, .menu-item.active,
+.menu-main-item:hover {
+    background: rgba(255,255,255,0.15);
+    border-left: 4px solid white;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    background: rgba(0,0,0,0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.menu-item.active .submenu {
+    max-height: 1000px;
+}
+
+.submenu-item {
+    padding: 10px 25px 10px 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.submenu-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.submenu-toggle {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.menu-item.active .submenu-toggle {
+    transform: rotate(180deg);
+}
+
+/* Переключение вкладок */
 .content {
     display: none;
     animation: fadeIn 0.4s ease;
@@ -182,11 +244,23 @@ body.detail-view-active .sidebar-toggle {
 
 /* Стили карточек */
 .dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     padding: 0;
-    justify-items: center;
+}
+
+.kpi-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 0 15px;
 }
 
 .kpi-card {
@@ -199,8 +273,6 @@ body.detail-view-active .sidebar-toggle {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    max-width: 350px;
-    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -218,12 +290,12 @@ body.detail-view-active .sidebar-toggle {
 }
 
 .kpi-subcategory {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #475569;
     flex: 1;
-    word-break: break-word; /* Разрешить перенос слов */
-    white-space: normal; /* Разрешить перенос строк */
+    word-break: break-word;
+    white-space: normal;
 }
 
 .kpi-period {
@@ -245,7 +317,7 @@ body.detail-view-active .sidebar-toggle {
 }
 
 .kpi-value {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 800;
     color: var(--primary);
     line-height: 1.2;
@@ -270,24 +342,6 @@ body.detail-view-active .sidebar-toggle {
 
 .trend-down {
     color: var(--danger);
-}
-
-.period-type {
-    font-size: 0.85rem;
-    color: var(--gray);
-    font-weight: normal;
-    margin-left: 5px;
-}
-
-/* Стиль для текущей вкладки */
-.current-tab {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-top: 10px;
-    color: grey;
-    background:transparent;
-    display: inline-block;
-    padding: 5px 15px;
 }
 
 .footer {
@@ -325,6 +379,10 @@ body.detail-view-active .sidebar-toggle {
 
 .detail-btn i {
     font-size: 0.9rem;
+}
+
+.btn-text {
+    margin-left: 5px;
 }
 
 /* Детализация показателя */
@@ -380,7 +438,7 @@ body.detail-view-active .sidebar-toggle {
     padding: 10px 20px;
     background: linear-gradient(135deg, #4a67d8, #5e4fc9);
     border: none;
-    border-radius: 8px;
+    border-radius: 20px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -509,7 +567,7 @@ body.detail-view-active .sidebar-toggle {
 
 /* Стили для разделителей таблицы */
 .section-header {
-    background-color: #f1f5f9 !important;
+    background-color: transparent !important;
     font-weight: bold;
 }
 
@@ -527,12 +585,8 @@ body.detail-view-active .sidebar-toggle {
 
 /* Адаптивность */
 @media (max-width: 992px) {
-    .dashboard {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .kpi-value {
-        font-size: 1.7rem;
+    .kpi-cards {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
 }
 
@@ -550,11 +604,6 @@ body.detail-view-active .sidebar-toggle {
     .sidebar-toggle {
         left: 15px;
         top: 25px;
-    }
-
-    .header h1 {
-        font-size: 2rem;
-        padding: 0 20px;
     }
 
     .detail-header {
@@ -585,8 +634,11 @@ body.detail-view-active .sidebar-toggle {
     }
 
     .dashboard {
-        grid-template-columns: 1fr;
         gap: 15px;
+    }
+
+    .kpi-cards {
+        grid-template-columns: 1fr;
         padding: 0 10px;
     }
 
@@ -606,10 +658,8 @@ body.detail-view-active .sidebar-toggle {
 
     .kpi-subcategory {
         font-size: 1rem;
-        /* Разрешить перенос слов на несколько строк */
         white-space: normal;
         word-break: break-word;
-        /* Убрать обрезку текста */
         overflow: visible;
         text-overflow: clip;
     }
@@ -655,7 +705,7 @@ body.detail-view-active .sidebar-toggle {
         font-size: 0.8rem;
     }
 
-    .detail-btn span {
+    .btn-text {
         display: none;
     }
 
