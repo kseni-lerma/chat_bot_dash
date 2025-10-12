@@ -282,7 +282,7 @@ body {
     }
     
     .header h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem; /* Увеличено с 1.4rem */
     }
     
     .dashboard-grid {
@@ -317,62 +317,62 @@ body {
     
     /* Компактные карточки для мобильных */
     .card-content {
-        padding: 1.25rem 1rem;
+        padding: 1.5rem 1.25rem; /* Увеличено с 1.25rem 1rem */
         min-height: 180px;
     }
     
     .card-icon {
-        font-size: 2.2rem;
+        font-size: 2.5rem; /* Увеличено с 2.2rem */
         margin-bottom: 0.75rem;
     }
     
     .cube-card h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.4rem; /* Увеличено с 1.2rem */
+        margin-bottom: 0.75rem; /* Увеличено с 0.5rem */
     }
     
     .cube-card p {
-        font-size: 0.85rem;
+        font-size: 1rem; /* Увеличено с 0.85rem */
         line-height: 1.4;
         margin-bottom: 0.75rem;
     }
     
     .badge, .status-indicator {
-        padding: 0.35rem 1rem;
-        font-size: 0.75rem;
+        padding: 0.4rem 1.2rem; /* Увеличено с 0.35rem 1rem */
+        font-size: 0.85rem; /* Увеличено с 0.75rem */
     }
     
     .footer {
         padding: 0.75rem;
-        font-size: 0.75rem;
+        font-size: 0.8rem; /* Увеличено с 0.75rem */
     }
 }
 
 /* Ультра-компактный режим для очень маленьких экранов */
 @media (max-width: 768px) and (max-height: 700px) {
     .card-content {
-        padding: 1rem 0.75rem;
+        padding: 1.25rem 1rem; /* Увеличено с 1rem 0.75rem */
         min-height: 150px;
     }
     
     .card-icon {
-        font-size: 1.8rem;
+        font-size: 2.2rem; /* Увеличено с 1.8rem */
         margin-bottom: 0.5rem;
     }
     
     .cube-card h2 {
-        font-size: 1.1rem;
+        font-size: 1.3rem; /* Увеличено с 1.1rem */
         margin-bottom: 0.4rem;
     }
     
     .cube-card p {
-        font-size: 0.8rem;
+        font-size: 0.9rem; /* Увеличено с 0.8rem */
         margin-bottom: 0.5rem;
     }
     
     .badge, .status-indicator {
-        padding: 0.3rem 0.8rem;
-        font-size: 0.7rem;
+        padding: 0.35rem 1rem; /* Увеличено с 0.3rem 0.8rem */
+        font-size: 0.8rem; /* Увеличено с 0.7rem */
     }
 }
 
@@ -722,7 +722,7 @@ body {
     }
     
     .card-content {
-        padding: 1rem 0.75rem;
+        padding: 1.25rem 1rem; /* Увеличено с 1rem 0.75rem */
         min-height: 160px;
     }
 }
@@ -745,22 +745,22 @@ body {
     
     /* Еще более компактные карточки в ландшафтном режиме */
     .card-content {
-        padding: 0.75rem 0.5rem;
+        padding: 1rem 0.75rem; /* Увеличено с 0.75rem 0.5rem */
         min-height: 140px;
     }
     
     .card-icon {
-        font-size: 1.5rem;
+        font-size: 1.8rem; /* Увеличено с 1.5rem */
         margin-bottom: 0.5rem;
     }
     
     .cube-card h2 {
-        font-size: 1rem;
+        font-size: 1.2rem; /* Увеличено с 1rem */
         margin-bottom: 0.3rem;
     }
     
     .cube-card p {
-        font-size: 0.75rem;
+        font-size: 0.9rem; /* Увеличено с 0.75rem */
         margin-bottom: 0.5rem;
     }
 }
@@ -792,19 +792,19 @@ body {
 /* Оптимизация для очень маленьких мобильных устройств */
 @media (max-width: 360px) {
     .card-content {
-        padding: 0.75rem;
+        padding: 1.25rem 0.75rem; /* Увеличено с 0.75rem */
         min-height: 140px;
     }
     
     .card-icon {
-        font-size: 1.8rem;
+        font-size: 2.2rem; /* Увеличено с 1.8rem */
     }
     
     .cube-card h2 {
-        font-size: 1rem;
+        font-size: 1.3rem; /* Увеличено с 1rem */
     }
     
     .cube-card p {
-        font-size: 0.75rem;
+        font-size: 0.9rem; /* Увеличено с 0.75rem */
     }
 }
