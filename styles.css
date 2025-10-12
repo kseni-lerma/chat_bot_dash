@@ -275,7 +275,7 @@ body {
     
     .header-content {
         flex-direction: row;
-        gap: 3rem;
+        gap: 2rem;
         text-align: left;
         padding: 0 0.75rem;
         justify-content: flex-start;
@@ -363,6 +363,7 @@ body {
     .cube-card h2 {
         font-size: 1.3rem; /* Увеличено с 1.1rem */
         margin-bottom: 0.4rem;
+        margin-rigth: 0.4rem;
     }
     
     .cube-card p {
