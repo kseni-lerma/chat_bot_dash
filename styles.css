@@ -275,7 +275,7 @@ body {
     
     .header-content {
         flex-direction: row;
-        gap: 1rem;
+        gap: 2rem;
         text-align: left;
         padding: 0 0.75rem;
         justify-content: flex-start;
