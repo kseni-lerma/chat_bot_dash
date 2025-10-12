@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.transition = 'all 0.6s ease';
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
-        }, index * 150);
+        }, index * 200);
     });
 
     // Интерактивность для куба
@@ -28,26 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cube.addEventListener('click', toggleRotation);
 
-    // Подсветка активной карточки
-    const activeCards = document.querySelectorAll('.cube-card:not(.coming-soon)');
-    activeCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.zIndex = '10';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.zIndex = '1';
-        });
-    });
-
-    // Адаптация для больших экранов
+    // Адаптация для разных размеров экранов
     function handleResize() {
-        const isLargeScreen = window.innerWidth >= 1600;
-        document.body.classList.toggle('large-screen', isLargeScreen);
+        const width = window.innerWidth;
+        const body = document.body;
         
-        // Оптимизация для OLED панелей
-        if (window.innerWidth >= 2000) {
-            document.body.style.background = '#0a1f0a';
+        // Убираем классы перед добавлением новых
+        body.classList.remove('mobile', 'tablet', 'desktop', 'large-desktop', 'huge-desktop');
+        
+        if (width < 768) {
+            body.classList.add('mobile');
+        } else if (width < 1200) {
+            body.classList.add('tablet');
+        } else if (width < 2000) {
+            body.classList.add('desktop');
+        } else if (width < 3000) {
+            body.classList.add('large-desktop');
+        } else {
+            body.classList.add('huge-desktop');
         }
     }
 
@@ -59,28 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Системные функции
 const KUBSystem = {
-    // Метод для добавления новых блоков
-    addNewBlock: function(title, description, icon, url) {
-        const grid = document.querySelector('.dashboard-grid');
-        const newCard = document.createElement('a');
-        newCard.href = url;
-        newCard.className = 'cube-card';
-        newCard.innerHTML = `
-            <div class="card-content">
-                <div class="card-icon">${icon}</div>
-                <h2>${title}</h2>
-                <p>${description}</p>
-                <div class="card-hover-effect"></div>
-            </div>
-        `;
-        grid.appendChild(newCard);
-        return newCard;
-    },
-
     // Метод для показа уведомлений
     showNotification: function(message, type = 'info') {
         const notification = document.createElement('div');
-        const bgColor = type === 'success' ? '#4caf50' : '#FF9800';
+        const bgColor = type === 'success' ? '#3b82f6' : '#f59e0b';
         
         notification.style.cssText = `
             position: fixed;
