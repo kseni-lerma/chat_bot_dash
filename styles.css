@@ -237,43 +237,58 @@ body {
     
     .dashboard-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
         max-width: 500px;
-        margin: 2rem auto 0;
+        margin: 1.5rem auto 0;
     }
     
     .main {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
     }
     
     .cube {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
     
     .face {
-        width: 60px;
-        height: 60px;
-        font-size: 14px;
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
     }
     
-    .front  { transform: rotateY(0deg) translateZ(30px); }
-    .back   { transform: rotateY(180deg) translateZ(30px); }
-    .right  { transform: rotateY(90deg) translateZ(30px); }
-    .left   { transform: rotateY(-90deg) translateZ(30px); }
-    .top    { transform: rotateX(90deg) translateZ(30px); }
-    .bottom { transform: rotateX(-90deg) translateZ(30px); }
+    .front  { transform: rotateY(0deg) translateZ(25px); }
+    .back   { transform: rotateY(180deg) translateZ(25px); }
+    .right  { transform: rotateY(90deg) translateZ(25px); }
+    .left   { transform: rotateY(-90deg) translateZ(25px); }
+    .top    { transform: rotateX(90deg) translateZ(25px); }
+    .bottom { transform: rotateX(-90deg) translateZ(25px); }
     
+    /* Компактные карточки для мобильных */
     .card-content {
-        padding: 2.5rem 2rem;
+        padding: 1.5rem 1.25rem;
     }
     
     .card-icon {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
     
     .cube-card h2 {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .cube-card p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 0;
+    }
+    
+    .footer {
+        padding: 1.5rem;
+        margin-top: 2rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -309,6 +324,7 @@ body {
     
     .header-content {
         max-width: 2000px;
+        gap: 3rem; /* Увеличиваем расстояние между кубом и надписью */
     }
     
     .cube {
@@ -364,6 +380,11 @@ body {
     .main {
         padding: 6rem 4rem;
         max-width: 2800px;
+    }
+    
+    .header-content {
+        gap: 4rem; /* Еще больше расстояние для очень больших экранов */
+        max-width: 2400px;
     }
     
     .cube-card {
@@ -423,6 +444,11 @@ body {
         padding: 8rem 6rem;
     }
     
+    .header-content {
+        gap: 5rem; /* Максимальное расстояние для огромных экранов */
+        max-width: 2800px;
+    }
+    
     .card-content {
         padding: 6rem 5rem;
     }
@@ -467,15 +493,19 @@ body {
 /* Поддержка портретного режима на мобильных */
 @media (max-width: 480px) and (orientation: portrait) {
     .header {
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 1rem;
     }
     
     .main {
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 1rem;
     }
     
     .dashboard-grid {
-        gap: 1.5rem;
+        gap: 1.25rem;
+    }
+    
+    .header-content {
+        gap: 1.25rem;
     }
 }
 
@@ -486,11 +516,30 @@ body {
     }
     
     .main {
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 1rem;
     }
     
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 1.25rem;
+    }
+    
+    /* Еще более компактные карточки в ландшафтном режиме */
+    .card-content {
+        padding: 1.25rem 1rem;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .cube-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .cube-card p {
+        font-size: 0.8rem;
     }
 }
