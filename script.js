@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
+        card.style.transform = 'translateY(20px)';
         
         setTimeout(() => {
             card.style.transition = 'all 0.6s ease';
@@ -67,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Найдем максимальную высоту
         cards.forEach(card => {
+            if (window.innerWidth <= 768 && !card.classList.contains('active-card')) {
+                return;
+            }
             const cardHeight = card.offsetHeight;
             if (cardHeight > maxHeight) {
                 maxHeight = cardHeight;
@@ -76,6 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Применим максимальную высоту ко всем карточкам
         if (maxHeight > 0 && window.innerWidth >= 769) {
             cards.forEach(card => {
+                if (window.innerWidth <= 768 && !card.classList.contains('active-card')) {
+                    return;
+                }
                 card.style.height = maxHeight + 'px';
             });
         }
@@ -86,6 +92,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Выравнивание высоты после загрузки всех ресурсов
     window.addEventListener('load', alignCardHeights);
+
+    // Оптимизация для мобильных: убедимся что карточки занимают весь экран
+    function optimizeMobileLayout() {
+        if (window.innerWidth <= 768) {
+            const main = document.querySelector('.main');
+            const grid = document.querySelector('.dashboard-grid');
+            const viewportHeight = window.innerHeight;
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const footerHeight = document.querySelector('.footer').offsetHeight;
+            const availableHeight = viewportHeight - headerHeight - footerHeight - 32; // 32px для отступов
+            
+            if (main && grid) {
+                main.style.height = availableHeight + 'px';
+                grid.style.height = '100%';
+            }
+        }
+    }
+
+    window.addEventListener('resize', optimizeMobileLayout);
+    optimizeMobileLayout();
 
     console.log('КУБ система запущена!');
 });
