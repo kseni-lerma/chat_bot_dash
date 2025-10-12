@@ -55,54 +55,25 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    console.log('🚀 КУБ система запущена! Добро пожаловать!');
+    console.log('КУБ система запущена!');
 });
 
 // Системные функции
 const KUBSystem = {
-    // Метод для показа уведомлений
-    showNotification: function(message, type = 'info') {
-        const notification = document.createElement('div');
-        const bgColor = type === 'success' ? '#8B5CF6' : '#06D6A0';
-        
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${bgColor};
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            z-index: 10000;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            font-weight: 500;
+    // Метод для добавления новых блоков
+    addNewBlock: function(title, description, icon, url) {
+        const grid = document.querySelector('.dashboard-grid');
+        const newCard = document.createElement('a');
+        newCard.href = url;
+        newCard.className = 'cube-card active-card';
+        newCard.innerHTML = `
+            <div class="card-content">
+                <div class="card-icon">${icon}</div>
+                <h2>${title}</h2>
+                <p>${description}</p>
+            </div>
         `;
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        // Показываем уведомление
-        setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Убираем уведомление
-        setTimeout(() => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }, 3000);
-    },
-
-    // Инициализация системы
-    init: function() {
-        this.showNotification('КУБ система загружена успешно!', 'success');
+        grid.appendChild(newCard);
+        return newCard;
     }
 };
-
-// Инициализируем систему
-setTimeout(() => {
-    KUBSystem.init();
-}, 1000);
