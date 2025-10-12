@@ -40,6 +40,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Адаптация для больших экранов
+    function handleResize() {
+        const isLargeScreen = window.innerWidth >= 1600;
+        document.body.classList.toggle('large-screen', isLargeScreen);
+        
+        // Оптимизация для OLED панелей
+        if (window.innerWidth >= 2000) {
+            document.body.style.background = '#0a1f0a';
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
     console.log('🚀 КУБ система запущена! Добро пожаловать!');
 });
 
@@ -66,7 +80,7 @@ const KUBSystem = {
     // Метод для показа уведомлений
     showNotification: function(message, type = 'info') {
         const notification = document.createElement('div');
-        const bgColor = type === 'success' ? '#4caf50' : '#2e7d32';
+        const bgColor = type === 'success' ? '#4caf50' : '#FF9800';
         
         notification.style.cssText = `
             position: fixed;
