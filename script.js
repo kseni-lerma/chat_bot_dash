@@ -47,13 +47,45 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // На больших экранах показываем все карточки
             desktopCards.forEach(card => {
-                card.style.display = 'block';
+                card.style.display = 'flex';
+            });
+        }
+
+        // Выравнивание высоты карточек
+        alignCardHeights();
+    }
+
+    // Функция для выравнивания высоты карточек
+    function alignCardHeights() {
+        const cards = document.querySelectorAll('.cube-card');
+        let maxHeight = 0;
+        
+        // Сначала сбросим высоту
+        cards.forEach(card => {
+            card.style.height = 'auto';
+        });
+        
+        // Найдем максимальную высоту
+        cards.forEach(card => {
+            const cardHeight = card.offsetHeight;
+            if (cardHeight > maxHeight) {
+                maxHeight = cardHeight;
+            }
+        });
+        
+        // Применим максимальную высоту ко всем карточкам
+        if (maxHeight > 0 && window.innerWidth >= 769) {
+            cards.forEach(card => {
+                card.style.height = maxHeight + 'px';
             });
         }
     }
 
     window.addEventListener('resize', handleResize);
     handleResize();
+
+    // Выравнивание высоты после загрузки всех ресурсов
+    window.addEventListener('load', alignCardHeights);
 
     console.log('КУБ система запущена!');
 });
@@ -71,6 +103,9 @@ const KUBSystem = {
                 <div class="card-icon">${icon}</div>
                 <h2>${title}</h2>
                 <p>${description}</p>
+                <div class="card-footer">
+                    <span class="status-indicator active">Активно</span>
+                </div>
             </div>
         `;
         grid.appendChild(newCard);
