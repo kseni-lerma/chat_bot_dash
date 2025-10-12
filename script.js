@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Анимация появления карточек с задержкой
     const cards = document.querySelectorAll('.cube-card');
     cards.forEach((card, index) => {
+        // Показываем только активные карточки на мобильных
+        if (window.innerWidth <= 768 && !card.classList.contains('active-card')) {
+            card.style.display = 'none';
+            return;
+        }
+        
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         
@@ -31,21 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Адаптация для разных размеров экранов
     function handleResize() {
         const width = window.innerWidth;
-        const body = document.body;
+        const desktopCards = document.querySelectorAll('.desktop-only');
         
-        // Убираем классы перед добавлением новых
-        body.classList.remove('mobile', 'tablet', 'desktop', 'large-desktop', 'huge-desktop');
-        
-        if (width < 768) {
-            body.classList.add('mobile');
-        } else if (width < 1200) {
-            body.classList.add('tablet');
-        } else if (width < 2000) {
-            body.classList.add('desktop');
-        } else if (width < 3000) {
-            body.classList.add('large-desktop');
+        if (width <= 768) {
+            // На мобильных скрываем дополнительные карточки
+            desktopCards.forEach(card => {
+                card.style.display = 'none';
+            });
         } else {
-            body.classList.add('huge-desktop');
+            // На больших экранах показываем все карточки
+            desktopCards.forEach(card => {
+                card.style.display = 'block';
+            });
         }
     }
 
@@ -60,7 +63,7 @@ const KUBSystem = {
     // Метод для показа уведомлений
     showNotification: function(message, type = 'info') {
         const notification = document.createElement('div');
-        const bgColor = type === 'success' ? '#3b82f6' : '#f59e0b';
+        const bgColor = type === 'success' ? '#8B5CF6' : '#06D6A0';
         
         notification.style.cssText = `
             position: fixed;
