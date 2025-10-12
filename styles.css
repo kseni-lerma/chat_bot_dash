@@ -121,7 +121,7 @@ body {
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin-top: 1rem;
     justify-content: center;
@@ -140,6 +140,9 @@ body {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .cube-card::before {
@@ -170,6 +173,10 @@ body {
     text-align: center;
     position: relative;
     z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card-icon {
@@ -195,6 +202,7 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     font-size: 1.1rem;
+    flex: 1;
 }
 
 .badge {
@@ -237,7 +245,7 @@ body {
     
     .dashboard-grid {
         grid-template-columns: 1fr;
-        gap: 2rem; /* Увеличили отступ между карточками */
+        gap: 2rem;
         max-width: 500px;
         margin: 1.5rem auto 0;
     }
@@ -325,11 +333,12 @@ body {
     
     .main {
         padding: 4rem 3rem;
+        max-width: 95%;
     }
     
     .header-content {
-        max-width: 2000px;
-        gap: 3rem; /* Увеличиваем расстояние между кубом и надписью */
+        max-width: 95%;
+        gap: 3rem;
     }
     
     .cube {
@@ -355,75 +364,70 @@ body {
     }
     
     .card-content {
-        padding: 4rem 3rem;
+        padding: 3rem 2.5rem;
     }
     
     .card-icon {
-        font-size: 5rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .cube-card h2 {
-        font-size: 2.2rem;
+        font-size: 4rem;
         margin-bottom: 2rem;
     }
     
+    .cube-card h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
     .cube-card p {
-        font-size: 1.2rem; /* Уменьшили шрифт описания для 2 строк */
+        font-size: 1.1rem;
         line-height: 1.5;
-        min-height: 3.6rem; /* Высота для 2 строк */
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     
     .badge {
-        font-size: 1.1rem; /* Увеличили надпись "Скоро" */
-        padding: 0.7rem 2rem;
+        font-size: 1rem;
+        padding: 0.6rem 1.8rem;
         margin-top: 1.5rem;
     }
 }
 
 @media (min-width: 2000px) {
     .dashboard-grid {
-        grid-template-columns: repeat(6, 1fr); /* 6 карточек в один ряд */
-        gap: 2rem; /* Уменьшаем gap для компактности */
-        max-width: 2400px;
-        margin: 3rem auto 0;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2rem;
+        max-width: 100%;
     }
     
     .main {
         padding: 4rem 3rem;
-        max-width: 2800px;
+        max-width: 98%;
     }
     
     .header-content {
-        gap: 4rem; /* Еще больше расстояние для очень больших экранов */
-        max-width: 2400px;
+        gap: 4rem;
+        max-width: 98%;
     }
     
     .cube-card {
         border-radius: 20px;
+        min-height: 350px;
     }
     
     .card-content {
-        padding: 3rem 2rem; /* Уменьшаем padding для компактности */
+        padding: 2.5rem 2rem;
     }
     
     .card-icon {
-        font-size: 4rem; /* Уменьшаем иконки */
-        margin-bottom: 2rem;
-    }
-    
-    .cube-card h2 {
-        font-size: 1.8rem; /* Уменьшаем заголовки */
+        font-size: 3.5rem;
         margin-bottom: 1.5rem;
     }
     
+    .cube-card h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
     .cube-card p {
-        font-size: 1rem; /* Уменьшаем описание */
+        font-size: 1rem;
         line-height: 1.4;
-        min-height: 2.8rem;
     }
     
     .header h1 {
@@ -449,7 +453,7 @@ body {
     .bottom { transform: rotateX(-90deg) translateZ(60px); }
     
     .badge {
-        font-size: 1rem; /* Уменьшаем бейдж */
+        font-size: 1rem;
         padding: 0.6rem 1.8rem;
         margin-top: 1.5rem;
     }
@@ -457,38 +461,38 @@ body {
 
 @media (min-width: 3000px) {
     .dashboard-grid {
-        grid-template-columns: repeat(6, 1fr); /* Сохраняем 6 колонок */
-        gap: 3rem;
-        max-width: 2800px;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2.5rem;
+        max-width: 100%;
     }
     
     .main {
-        padding: 6rem 4rem;
+        padding: 5rem 4rem;
+        max-width: 98%;
     }
     
     .header-content {
-        gap: 5rem; /* Максимальное расстояние для огромных экранов */
-        max-width: 2800px;
+        gap: 5rem;
+        max-width: 98%;
     }
     
     .card-content {
-        padding: 4rem 3rem;
+        padding: 3rem 2.5rem;
     }
     
     .card-icon {
-        font-size: 5rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .cube-card h2 {
-        font-size: 2.2rem;
+        font-size: 4rem;
         margin-bottom: 2rem;
     }
     
+    .cube-card h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
     .cube-card p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         line-height: 1.5;
-        min-height: 3.6rem;
     }
     
     .header h1 {
@@ -514,8 +518,8 @@ body {
     .bottom { transform: rotateX(-90deg) translateZ(70px); }
     
     .badge {
-        font-size: 1.2rem;
-        padding: 0.8rem 2.2rem;
+        font-size: 1.1rem;
+        padding: 0.7rem 2rem;
         margin-top: 2rem;
     }
 }
@@ -548,7 +552,7 @@ body {
     }
     
     .dashboard-grid {
-        gap: 1.5rem; /* Сохраняем отступ между карточками */
+        gap: 1.5rem;
     }
     
     .header-content {
