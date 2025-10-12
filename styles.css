@@ -5,21 +5,23 @@
 }
 
 :root {
-    --primary-blue: #2563eb;
-    --dark-blue: #1e40af;
-    --light-blue: #3b82f6;
-    --accent-blue: #60a5fa;
-    --deep-navy: #0f172a;
+    --primary-purple: #8B5CF6;
+    --dark-purple: #7C3AED;
+    --light-purple: #A78BFA;
+    --deep-space: #0F0F23;
+    --space-blue: #1A1A2E;
+    --cosmic-purple: #16213E;
     --card-bg: rgba(255, 255, 255, 0.95);
-    --text-dark: #1e293b;
-    --text-light: #64748b;
-    --cube-color: #f59e0b;
-    --cube-dark: #d97706;
+    --text-dark: #1F2937;
+    --text-light: #6B7280;
+    --cube-color: #06D6A0;
+    --cube-dark: #05B184;
+    --accent-teal: #0D9488;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--deep-navy) 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--deep-space) 0%, var(--space-blue) 50%, var(--cosmic-purple) 100%);
     min-height: 100vh;
     color: #333;
 }
@@ -40,8 +42,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(96, 165, 250, 0.1) 50%, transparent 70%);
-    animation: shimmer 6s infinite;
+    background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+    animation: shimmer 8s infinite;
 }
 
 @keyframes shimmer {
@@ -120,7 +122,7 @@ body {
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
+    gap: 2rem;
     margin-top: 1rem;
     justify-content: center;
 }
@@ -133,7 +135,7 @@ body {
     color: inherit;
     transition: all 0.4s ease;
     box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 15px 35px rgba(0, 0, 0, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
     overflow: hidden;
@@ -147,7 +149,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--light-blue);
+    background: var(--primary-purple);
     transform: scaleX(0);
     transition: transform 0.4s ease;
 }
@@ -156,10 +158,10 @@ body {
     transform: scaleX(1);
 }
 
-.cube-card:hover {
+.active-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 25px 50px rgba(0, 0, 0, 0.35),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -177,9 +179,9 @@ body {
     display: block;
 }
 
-.cube-card:hover .card-icon {
+.active-card:hover .card-icon {
     transform: scale(1.05);
-    color: var(--light-blue);
+    color: var(--primary-purple);
 }
 
 .cube-card h2 {
@@ -195,12 +197,28 @@ body {
     font-size: 1.1rem;
 }
 
+.badge {
+    display: inline-block;
+    background: var(--accent-teal);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
 .footer {
     text-align: center;
     padding: 2rem;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 3rem;
     font-size: 0.9rem;
+}
+
+/* Скрываем дополнительные карточки на мобильных */
+.desktop-only {
+    display: none;
 }
 
 /* Адаптивность для мобильных устройств */
@@ -259,30 +277,30 @@ body {
     }
 }
 
-/* Адаптивность для планшетов */
-@media (min-width: 769px) and (max-width: 1199px) {
+/* Показываем дополнительные карточки на планшетах и больше */
+@media (min-width: 769px) {
+    .desktop-only {
+        display: block;
+    }
+    
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem;
-    }
-    
-    .header-content {
-        max-width: 1200px;
     }
 }
 
 /* Адаптивность для больших мониторов */
 @media (min-width: 1200px) {
     .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* Адаптивность для огромных мониторов */
 @media (min-width: 1600px) {
     .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
     }
     
     .main {
@@ -337,9 +355,9 @@ body {
 
 @media (min-width: 2000px) {
     .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6rem;
-        max-width: 1600px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4rem;
+        max-width: 2200px;
         margin: 3rem auto 0;
     }
     
@@ -349,7 +367,7 @@ body {
     }
     
     .cube-card {
-        border-radius: 30px;
+        border-radius: 25px;
     }
     
     .card-content {
@@ -396,8 +414,9 @@ body {
 
 @media (min-width: 3000px) {
     .dashboard-grid {
-        gap: 8rem;
-        max-width: 2000px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5rem;
+        max-width: 2800px;
     }
     
     .main {
@@ -405,21 +424,21 @@ body {
     }
     
     .card-content {
-        padding: 7rem 5rem;
+        padding: 6rem 5rem;
     }
     
     .card-icon {
-        font-size: 8rem;
+        font-size: 7rem;
         margin-bottom: 4rem;
     }
     
     .cube-card h2 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
         margin-bottom: 3rem;
     }
     
     .cube-card p {
-        font-size: 2rem;
+        font-size: 1.8rem;
         line-height: 1.9;
     }
     
@@ -431,14 +450,14 @@ body {
 /* Высококонтрастный режим для огромных экранов */
 @media (min-width: 1600px) {
     body {
-        background: linear-gradient(135deg, #0a0f1c 0%, #151b2d 100%);
+        background: linear-gradient(135deg, #0A0A18 0%, #151530 50%, #1E1E3A 100%);
     }
     
     .cube-card {
         background: rgba(255, 255, 255, 0.98);
     }
     
-    .cube-card:hover {
+    .active-card:hover {
         box-shadow: 
             0 35px 70px rgba(0, 0, 0, 0.4),
             inset 0 1px 0 rgba(255, 255, 255, 0.95);
