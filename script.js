@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.display = 'none';
             return;
         }
-        
+
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
             card.style.transition = 'all 0.6s ease';
             card.style.opacity = '1';
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleResize() {
         const width = window.innerWidth;
         const desktopCards = document.querySelectorAll('.desktop-only');
-        
+
         if (width <= 768) {
             // На мобильных скрываем дополнительные карточки
             desktopCards.forEach(card => {
@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function alignCardHeights() {
         const cards = document.querySelectorAll('.cube-card');
         let maxHeight = 0;
-        
+
         // Сначала сбросим высоту
         cards.forEach(card => {
             card.style.height = 'auto';
         });
-        
+
         // Найдем максимальную высоту
         cards.forEach(card => {
             if (window.innerWidth <= 768 && !card.classList.contains('active-card')) {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 maxHeight = cardHeight;
             }
         });
-        
+
         // Применим максимальную высоту ко всем карточкам
         if (maxHeight > 0 && window.innerWidth >= 769) {
             cards.forEach(card => {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const headerHeight = document.querySelector('.header').offsetHeight;
             const footerHeight = document.querySelector('.footer').offsetHeight;
             const availableHeight = viewportHeight - headerHeight - footerHeight - 32; // 32px для отступов
-            
+
             if (main && grid) {
                 main.style.height = availableHeight + 'px';
                 grid.style.height = '100%';
