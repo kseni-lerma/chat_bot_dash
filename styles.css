@@ -515,7 +515,7 @@ body {
     }
 }
 
-/* ОСНОВНЫЕ ИЗМЕНЕНИЯ ДЛЯ ЭКРАНОВ 1920x1080 (55 ДЮЙМОВ) - ОСТАВЛЯЕМ КАК БЫЛО */
+/* ОСНОВНЫЕ ИЗМЕНЕНИЯ ДЛЯ ЭКРАНОВ 1920x1080 - УВЕЛИЧЕННЫЕ ШРИФТЫ */
 @media (min-width: 1920px) {
     body {
         height: 100vh;
@@ -559,7 +559,7 @@ body {
         width: 100%;
     }
 
-    /* УВЕЛИЧЕННЫЕ РАЗМЕРЫ ШРИФТОВ И ИКОНОК (как было) */
+    /* УВЕЛИЧЕННЫЕ РАЗМЕРЫ ШРИФТОВ И ИКОНОК */
     .card-icon {
         font-size: 5.5rem;
         margin-bottom: 2rem;
@@ -630,134 +630,46 @@ body {
     }
 }
 
-/* ОПТИМИЗАЦИЯ ДЛЯ ЭКРАНОВ 65 ДЮЙМОВ (2500px+) - БОЛЕЕ СБАЛАНСИРОВАННАЯ ВЕРСТКА */
+/* ОПТИМИЗАЦИЯ ДЛЯ ОЧЕНЬ БОЛЬШИХ ЭКРАНОВ 55-65 ДЮЙМОВ */
 @media (min-width: 2500px) {
     .dashboard-grid {
         gap: 3rem;
-        /* Ограничиваем максимальную ширину для баланса */
-        max-width: 95%;
-        margin: 0 auto;
     }
 
     .main {
         padding: 3rem 2rem;
-        max-width: 95%;
+        max-width: 98%;
         height: calc(100vh - 160px);
     }
 
     .header-content {
         gap: 4rem;
-        max-width: 95%;
-    }
-
-    .cube-card {
-        /* Делаем карточки более квадратными */
-        max-height: 500px;
-        min-height: 480px;
+        max-width: 98%;
     }
 
     .card-content {
-        padding: 3rem 2.5rem;
-        min-height: 450px;
-        /* Ограничиваем максимальную высоту контента */
-        max-height: 480px;
+        padding: 4rem 3rem;
+        min-height: 550px;
     }
 
-    /* БОЛЕЕ СБАЛАНСИРОВАННЫЕ РАЗМЕРЫ ДЛЯ 65 ДЮЙМОВ */
+    /* ЕЩЕ БОЛЬШИЕ ШРИФТЫ ДЛЯ ГИГАНТСКИХ ЭКРАНОВ */
     .card-icon {
-        font-size: 4.5rem;
-        margin-bottom: 1.8rem;
+        font-size: 7rem;
+        margin-bottom: 2.5rem;
+        min-height: 150px;
+    }
+
+    .cube-card h2 {
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
         min-height: 100px;
     }
 
-    .cube-card h2 {
-        font-size: 2rem;
-        margin-bottom: 1.3rem;
-        min-height: 70px;
-    }
-
     .cube-card p {
-        font-size: 1.3rem;
-        line-height: 1.5;
-        margin-bottom: 1.8rem;
-        min-height: 90px;
-    }
-
-    .header h1 {
-        font-size: 3.2rem;
-    }
-
-    .cube {
-        width: 110px;
-        height: 110px;
-    }
-
-    .face {
-        width: 110px;
-        height: 110px;
-        font-size: 24px;
-    }
-
-    .front  { transform: rotateY(0deg) translateZ(55px); }
-    .back   { transform: rotateY(180deg) translateZ(55px); }
-    .right  { transform: rotateY(90deg) translateZ(55px); }
-    .left   { transform: rotateY(-90deg) translateZ(55px); }
-    .top    { transform: rotateX(90deg) translateZ(55px); }
-    .bottom { transform: rotateX(-90deg) translateZ(55px); }
-
-    .badge, .status-indicator {
-        font-size: 1.1rem;
-        padding: 0.8rem 1.8rem;
-        margin-top: auto;
-    }
-
-    .footer {
-        font-size: 1rem;
-        padding: 1.5rem;
-    }
-}
-
-/* ДОПОЛНИТЕЛЬНАЯ ОПТИМИЗАЦИЯ ДЛЯ ОЧЕНЬ БОЛЬШИХ ЭКРАНОВ 65+ ДЮЙМОВ */
-@media (min-width: 3000px) {
-    .dashboard-grid {
-        gap: 3.5rem;
-        max-width: 90%;
-    }
-
-    .main {
-        padding: 4rem 3rem;
-        max-width: 90%;
-        height: calc(100vh - 180px);
-    }
-
-    .cube-card {
-        max-height: 520px;
-        min-height: 500px;
-    }
-
-    .card-content {
-        padding: 3.5rem 3rem;
-        min-height: 480px;
-        max-height: 500px;
-    }
-
-    .card-icon {
-        font-size: 4.8rem;
-        margin-bottom: 2rem;
-        min-height: 110px;
-    }
-
-    .cube-card h2 {
-        font-size: 2.1rem;
-        margin-bottom: 1.5rem;
-        min-height: 75px;
-    }
-
-    .cube-card p {
-        font-size: 1.35rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        min-height: 95px;
+        font-size: 1.7rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        min-height: 130px;
     }
 
     .header h1 {
@@ -781,6 +693,36 @@ body {
     .left   { transform: rotateY(-90deg) translateZ(60px); }
     .top    { transform: rotateX(90deg) translateZ(60px); }
     .bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+    .badge, .status-indicator {
+        font-size: 1.4rem;
+        padding: 1rem 2.5rem;
+        margin-top: auto;
+    }
+
+    .footer {
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
+}
+
+/* ДОПОЛНИТЕЛЬНАЯ ОПТИМИЗАЦИЯ ДЛЯ ШИРОКОФОРМАТНЫХ ЭКРАНОВ */
+@media (min-width: 1920px) and (min-aspect-ratio: 16/9) {
+    .card-content {
+        padding: 3.5rem 2.5rem;
+    }
+    
+    .card-icon {
+        font-size: 6rem;
+    }
+    
+    .cube-card h2 {
+        font-size: 2.4rem;
+    }
+    
+    .cube-card p {
+        font-size: 1.5rem;
+    }
 }
 
 /* Высококонтрастный режим для огромных экранов */
