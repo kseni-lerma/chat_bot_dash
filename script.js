@@ -113,6 +113,26 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', optimizeMobileLayout);
     optimizeMobileLayout();
 
+    // Оптимизация для больших экранов 1920x1080
+    function optimizeDesktopLayout() {
+        if (window.innerWidth >= 1920) {
+            const main = document.querySelector('.main');
+            const grid = document.querySelector('.dashboard-grid');
+            const viewportHeight = window.innerHeight;
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const footerHeight = document.querySelector('.footer').offsetHeight;
+            const availableHeight = viewportHeight - headerHeight - footerHeight - 40; // 40px для отступов
+
+            if (main && grid) {
+                main.style.height = availableHeight + 'px';
+                grid.style.height = '100%';
+            }
+        }
+    }
+
+    window.addEventListener('resize', optimizeDesktopLayout);
+    optimizeDesktopLayout();
+
     console.log('КУБ система запущена!');
 });
 
