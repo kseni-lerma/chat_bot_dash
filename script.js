@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Выравнивание высоты карточек
         alignCardHeights();
+        
+        // Динамическое обновление размеров шрифтов
+        updateFontSizes();
     }
 
     // Функция для выравнивания высоты карточек
@@ -85,6 +88,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.style.height = maxHeight + 'px';
             });
         }
+    }
+
+    // Функция для динамического обновления размеров шрифтов
+    function updateFontSizes() {
+        const cards = document.querySelectorAll('.cube-card');
+        
+        cards.forEach(card => {
+            const cardWidth = card.offsetWidth;
+            const cardHeight = card.offsetHeight;
+            const content = card.querySelector('.card-content');
+            
+            if (content) {
+                // Рассчитываем размеры на основе размеров карточки
+                const baseSize = Math.min(cardWidth, cardHeight) / 10;
+                
+                // Обновляем CSS переменные
+                content.style.setProperty('--icon-size', `${Math.max(2.5, baseSize * 0.8)}rem`);
+                content.style.setProperty('--title-size', `${Math.max(1.2, baseSize * 0.4)}rem`);
+                content.style.setProperty('--text-size', `${Math.max(0.9, baseSize * 0.25)}rem`);
+            }
+        });
     }
 
     window.addEventListener('resize', handleResize);
@@ -181,8 +205,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Вызываем выравнивание контента после полной загрузки
     window.addEventListener('load', function() {
-        setTimeout(alignCardContentHeights, 100);
+        setTimeout(() => {
+            alignCardContentHeights();
+            updateFontSizes();
+        }, 100);
     });
+
+    // Обновляем размеры шрифтов при изменении размера окна
+    window.addEventListener('resize', updateFontSizes);
 
     console.log('КУБ система запущена!');
 });
