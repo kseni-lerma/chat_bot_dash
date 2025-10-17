@@ -234,12 +234,12 @@ body {
 
 .badge {
     display: inline-block;
-    color: #E6E6E6;
+    color: var(--accent-teal);
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    border: 1px solid #E6E6E6;
+    border: 1px solid var(--accent-teal);
     border-radius: 4px;
     padding: 0.3rem 0.8rem;
 }
