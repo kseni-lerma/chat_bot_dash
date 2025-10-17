@@ -279,14 +279,14 @@ body {
 
     .header-content {
         flex-direction: row;
-        gap: 2.5rem; /* УВЕЛИЧЕНО с 1rem для большего расстояния между кубом и текстом */
+        gap: 2.5rem;
         text-align: left;
-        padding: 0 1.5rem; /* УВЕЛИЧЕНО с 0.75rem для большего пространства по бокам */
+        padding: 0 1.5rem;
         justify-content: flex-start;
     }
 
     .header h1 {
-        font-size: 1.8rem; /* УВЕЛИЧЕНО для лучшей читаемости на iPhone */
+        font-size: 1.8rem;
     }
 
     .dashboard-grid {
@@ -319,7 +319,6 @@ body {
     .top    { transform: rotateX(90deg) translateZ(22.5px); }
     .bottom { transform: rotateX(-90deg) translateZ(22.5px); }
 
-    /* Компактные карточки для мобильных */
     .card-content {
         padding: 1.5rem 1.25rem;
         min-height: 180px;
@@ -450,19 +449,7 @@ body {
     }
 }
 
-/* Адаптивность для больших мониторов 
-@media (min-width: 1200px) {
-    .dashboard-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .main {
-        padding: 3rem 2rem;
-    }
-}*/
-
-/* Адаптивность для огромных мониторов */
+/* Верстка для экранов 1920x1080 и больших мониторов */
 @media (min-width: 1600px) {
     .dashboard-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -528,7 +515,8 @@ body {
     }
 }
 
-@media (min-width: 2000px) {
+/* Основные изменения для экранов 1920x1080 16/9 */
+@media (min-width: 1920px) {
     body {
         height: 100vh;
         overflow: hidden;
@@ -536,18 +524,102 @@ body {
 
     .dashboard-grid {
         grid-template-columns: repeat(6, 1fr);
-        gap: 2rem;
+        gap: 1.5rem;
         max-width: 100%;
         height: 100%;
         align-items: stretch;
     }
 
     .main {
+        padding: 2rem 1.5rem;
+        max-width: 98%;
+        height: calc(100vh - 140px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-content {
+        gap: 3rem;
+        max-width: 98%;
+        padding: 0 2rem;
+    }
+
+    .cube-card {
+        border-radius: 16px;
+        height: 100%;
+        min-height: auto;
+    }
+
+    .card-content {
+        padding: 2rem 1.5rem;
+        height: 100%;
+        justify-content: space-between;
+        min-height: 300px;
+    }
+
+    .card-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cube-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .cube-card p {
+        font-size: 1rem;
+        line-height: 1.4;
+        flex: none;
+        margin-bottom: 1.5rem;
+        max-width: none;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .cube {
+        width: 80px;
+        height: 80px;
+    }
+
+    .face {
+        width: 80px;
+        height: 80px;
+        font-size: 18px;
+    }
+
+    .front  { transform: rotateY(0deg) translateZ(40px); }
+    .back   { transform: rotateY(180deg) translateZ(40px); }
+    .right  { transform: rotateY(90deg) translateZ(40px); }
+    .left   { transform: rotateY(-90deg) translateZ(40px); }
+    .top    { transform: rotateX(90deg) translateZ(40px); }
+    .bottom { transform: rotateX(-90deg) translateZ(40px); }
+
+    .badge, .status-indicator {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.2rem;
+        margin-top: auto;
+    }
+
+    .footer {
+        padding: 1rem;
+        margin-top: auto;
+    }
+}
+
+/* Оптимизация для очень больших экранов */
+@media (min-width: 2500px) {
+    .dashboard-grid {
+        gap: 2rem;
+    }
+
+    .main {
         padding: 3rem 2rem;
         max-width: 98%;
         height: calc(100vh - 160px);
-        display: flex;
-        flex-direction: column;
     }
 
     .header-content {
@@ -555,137 +627,52 @@ body {
         max-width: 98%;
     }
 
-    .cube-card {
-        border-radius: 20px;
-        height: 100%;
-        min-height: auto;
-    }
-
     .card-content {
-        padding: 3rem 2.5rem;
-        height: 100%;
-        justify-content: space-between;
+        padding: 3rem 2rem;
         min-height: 400px;
     }
 
     .card-icon {
-        font-size: 6rem;
-        margin-bottom: 2.5rem;
+        font-size: 4.5rem;
+        margin-bottom: 2rem;
     }
 
     .cube-card h2 {
-        font-size: 2.2rem;
-        margin-bottom: 2rem;
-        line-height: 1.3;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
     }
 
     .cube-card p {
-        font-size: 1.3rem;
-        line-height: 1.6;
-        flex: none;
+        font-size: 1.2rem;
+        line-height: 1.5;
         margin-bottom: 2rem;
-        max-width: none;
     }
 
     .header h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 
     .cube {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 
     .face {
-        width: 120px;
-        height: 120px;
-        font-size: 24px;
+        width: 100px;
+        height: 100px;
+        font-size: 22px;
     }
 
-    .front  { transform: rotateY(0deg) translateZ(60px); }
-    .back   { transform: rotateY(180deg) translateZ(60px); }
-    .right  { transform: rotateY(90deg) translateZ(60px); }
-    .left   { transform: rotateY(-90deg) translateZ(60px); }
-    .top    { transform: rotateX(90deg) translateZ(60px); }
-    .bottom { transform: rotateX(-90deg) translateZ(60px); }
+    .front  { transform: rotateY(0deg) translateZ(50px); }
+    .back   { transform: rotateY(180deg) translateZ(50px); }
+    .right  { transform: rotateY(90deg) translateZ(50px); }
+    .left   { transform: rotateY(-90deg) translateZ(50px); }
+    .top    { transform: rotateX(90deg) translateZ(50px); }
+    .bottom { transform: rotateX(-90deg) translateZ(50px); }
 
     .badge, .status-indicator {
-        font-size: 1.1rem;
-        padding: 0.7rem 2rem;
-        margin-top: auto;
-    }
-
-    .footer {
-        padding: 1.5rem;
-        margin-top: auto;
-    }
-}
-
-@media (min-width: 3000px) {
-    .dashboard-grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 2.5rem;
-        max-width: 100%;
-        height: 100%;
-    }
-
-    .main {
-        padding: 4rem 3rem;
-        max-width: 98%;
-        height: calc(100vh - 200px);
-    }
-
-    .header-content {
-        gap: 5rem;
-        max-width: 98%;
-    }
-
-    .card-content {
-        padding: 4rem 3rem;
-        min-height: 500px;
-    }
-
-    .card-icon {
-        font-size: 8rem;
-        margin-bottom: 3rem;
-    }
-
-    .cube-card h2 {
-        font-size: 2.8rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .cube-card p {
-        font-size: 1.6rem;
-        line-height: 1.6;
-        margin-bottom: 2.5rem;
-    }
-
-    .header h1 {
-        font-size: 4rem;
-    }
-
-    .cube {
-        width: 140px;
-        height: 140px;
-    }
-
-    .face {
-        width: 140px;
-        height: 140px;
-        font-size: 28px;
-    }
-
-    .front  { transform: rotateY(0deg) translateZ(70px); }
-    .back   { transform: rotateY(180deg) translateZ(70px); }
-    .right  { transform: rotateY(90deg) translateZ(70px); }
-    .left   { transform: rotateY(-90deg) translateZ(70px); }
-    .top    { transform: rotateX(90deg) translateZ(70px); }
-    .bottom { transform: rotateX(-90deg) translateZ(70px); }
-
-    .badge, .status-indicator {
-        font-size: 1.3rem;
-        padding: 0.8rem 2.2rem;
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
         margin-top: auto;
     }
 }
@@ -724,8 +711,8 @@ body {
     }
 
     .header-content {
-        gap: 2rem; /* Сохраняем увеличенный отступ */
-        padding: 0 1.25rem; /* Сохраняем увеличенные боковые отступы */
+        gap: 2rem;
+        padding: 0 1.25rem;
     }
 
     .card-content {
@@ -752,11 +739,10 @@ body {
     }
 
     .header-content {
-        gap: 2rem; /* Сохраняем увеличенный отступ в ландшафтном режиме */
+        gap: 2rem;
         padding: 0 1rem;
     }
 
-    /* Еще более компактные карточки в ландшафтном режиме */
     .card-content {
         padding: 1rem 0.75rem;
         min-height: 140px;
@@ -822,7 +808,7 @@ body {
     }
 
     .header-content {
-        gap: 1.5rem; /* Немного меньше отступ на очень маленьких экранах */
+        gap: 1.5rem;
         padding: 0 1rem;
     }
 }
