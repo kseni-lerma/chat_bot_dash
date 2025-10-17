@@ -515,7 +515,7 @@ body {
     }
 }
 
-/* Основные изменения для экранов 1920x1080 16/9 - 4 КАРТОЧКИ В ОДИН РЯД */
+/* ОСНОВНЫЕ ИЗМЕНЕНИЯ ДЛЯ ЭКРАНОВ 1920x1080 - УВЕЛИЧЕННЫЕ ШРИФТЫ */
 @media (min-width: 1920px) {
     body {
         height: 100vh;
@@ -552,27 +552,28 @@ body {
     }
 
     .card-content {
-        padding: 2.5rem 2rem;
+        padding: 3rem 2.5rem;
         height: 100%;
         justify-content: space-between;
-        min-height: 400px;
+        min-height: 450px;
         width: 100%;
     }
 
+    /* УВЕЛИЧЕННЫЕ РАЗМЕРЫ ШРИФТОВ И ИКОНОК */
     .card-icon {
-        font-size: 4rem;
-        margin-bottom: 1.5rem;
-        min-height: 80px;
+        font-size: 5.5rem;
+        margin-bottom: 2rem;
+        min-height: 120px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .cube-card h2 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
         line-height: 1.3;
-        min-height: 64px;
+        min-height: 85px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -581,91 +582,16 @@ body {
     }
 
     .cube-card p {
-        font-size: 1.1rem;
-        line-height: 1.5;
+        font-size: 1.4rem;
+        line-height: 1.6;
         flex: 1;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         max-width: none;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        min-height: 80px;
-    }
-
-    .header h1 {
-        font-size: 2.5rem;
-    }
-
-    .cube {
-        width: 80px;
-        height: 80px;
-    }
-
-    .face {
-        width: 80px;
-        height: 80px;
-        font-size: 18px;
-    }
-
-    .front  { transform: rotateY(0deg) translateZ(40px); }
-    .back   { transform: rotateY(180deg) translateZ(40px); }
-    .right  { transform: rotateY(90deg) translateZ(40px); }
-    .left   { transform: rotateY(-90deg) translateZ(40px); }
-    .top    { transform: rotateX(90deg) translateZ(40px); }
-    .bottom { transform: rotateX(-90deg) translateZ(40px); }
-
-    .badge, .status-indicator {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.5rem;
-        margin-top: auto;
-    }
-
-    .footer {
-        padding: 1rem;
-        margin-top: auto;
-    }
-}
-
-/* Оптимизация для очень больших экранов 55-65 дюймов */
-@media (min-width: 2500px) {
-    .dashboard-grid {
-        gap: 2.5rem;
-    }
-
-    .main {
-        padding: 3rem 2rem;
-        max-width: 98%;
-        height: calc(100vh - 160px);
-    }
-
-    .header-content {
-        gap: 4rem;
-        max-width: 98%;
-    }
-
-    .card-content {
-        padding: 3rem 2.5rem;
-        min-height: 450px;
-    }
-
-    .card-icon {
-        font-size: 5rem;
-        margin-bottom: 2rem;
-        min-height: 100px;
-    }
-
-    .cube-card h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        min-height: 70px;
-    }
-
-    .cube-card p {
-        font-size: 1.3rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        min-height: 100px;
+        min-height: 110px;
     }
 
     .header h1 {
@@ -691,9 +617,111 @@ body {
     .bottom { transform: rotateX(-90deg) translateZ(50px); }
 
     .badge, .status-indicator {
-        font-size: 1rem;
-        padding: 0.7rem 1.8rem;
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
         margin-top: auto;
+        border-radius: 20px;
+    }
+
+    .footer {
+        padding: 1.5rem;
+        margin-top: auto;
+        font-size: 1rem;
+    }
+}
+
+/* ОПТИМИЗАЦИЯ ДЛЯ ОЧЕНЬ БОЛЬШИХ ЭКРАНОВ 55-65 ДЮЙМОВ */
+@media (min-width: 2500px) {
+    .dashboard-grid {
+        gap: 3rem;
+    }
+
+    .main {
+        padding: 3rem 2rem;
+        max-width: 98%;
+        height: calc(100vh - 160px);
+    }
+
+    .header-content {
+        gap: 4rem;
+        max-width: 98%;
+    }
+
+    .card-content {
+        padding: 4rem 3rem;
+        min-height: 550px;
+    }
+
+    /* ЕЩЕ БОЛЬШИЕ ШРИФТЫ ДЛЯ ГИГАНТСКИХ ЭКРАНОВ */
+    .card-icon {
+        font-size: 7rem;
+        margin-bottom: 2.5rem;
+        min-height: 150px;
+    }
+
+    .cube-card h2 {
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
+        min-height: 100px;
+    }
+
+    .cube-card p {
+        font-size: 1.7rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        min-height: 130px;
+    }
+
+    .header h1 {
+        font-size: 3.5rem;
+    }
+
+    .cube {
+        width: 120px;
+        height: 120px;
+    }
+
+    .face {
+        width: 120px;
+        height: 120px;
+        font-size: 26px;
+    }
+
+    .front  { transform: rotateY(0deg) translateZ(60px); }
+    .back   { transform: rotateY(180deg) translateZ(60px); }
+    .right  { transform: rotateY(90deg) translateZ(60px); }
+    .left   { transform: rotateY(-90deg) translateZ(60px); }
+    .top    { transform: rotateX(90deg) translateZ(60px); }
+    .bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+    .badge, .status-indicator {
+        font-size: 1.4rem;
+        padding: 1rem 2.5rem;
+        margin-top: auto;
+    }
+
+    .footer {
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
+}
+
+/* ДОПОЛНИТЕЛЬНАЯ ОПТИМИЗАЦИЯ ДЛЯ ШИРОКОФОРМАТНЫХ ЭКРАНОВ */
+@media (min-width: 1920px) and (min-aspect-ratio: 16/9) {
+    .card-content {
+        padding: 3.5rem 2.5rem;
+    }
+    
+    .card-icon {
+        font-size: 6rem;
+    }
+    
+    .cube-card h2 {
+        font-size: 2.4rem;
+    }
+    
+    .cube-card p {
+        font-size: 1.5rem;
     }
 }
 
