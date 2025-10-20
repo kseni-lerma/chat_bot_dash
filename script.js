@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (main && grid) {
                 main.style.height = availableHeight + 'px';
                 grid.style.height = '100%';
-                
+
                 // Дополнительное выравнивание для больших экранов
                 alignCardContentHeights();
             }
@@ -140,36 +140,36 @@ document.addEventListener('DOMContentLoaded', function() {
             const icons = document.querySelectorAll('.card-icon');
             const titles = document.querySelectorAll('.cube-card h2');
             const paragraphs = document.querySelectorAll('.cube-card p');
-            
+
             let maxIconHeight = 0;
             let maxTitleHeight = 0;
             let maxParagraphHeight = 0;
-            
+
             // Находим максимальные высоты
             icons.forEach(icon => {
                 const height = icon.offsetHeight;
                 if (height > maxIconHeight) maxIconHeight = height;
             });
-            
+
             titles.forEach(title => {
                 const height = title.offsetHeight;
                 if (height > maxTitleHeight) maxTitleHeight = height;
             });
-            
+
             paragraphs.forEach(paragraph => {
                 const height = paragraph.offsetHeight;
                 if (height > maxParagraphHeight) maxParagraphHeight = height;
             });
-            
+
             // Применяем максимальные высоты
             icons.forEach(icon => {
                 icon.style.minHeight = maxIconHeight + 'px';
             });
-            
+
             titles.forEach(title => {
                 title.style.minHeight = maxTitleHeight + 'px';
             });
-            
+
             paragraphs.forEach(paragraph => {
                 paragraph.style.minHeight = maxParagraphHeight + 'px';
             });
