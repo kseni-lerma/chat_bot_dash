@@ -204,6 +204,7 @@ const KUBSystem = {
                     <span class="status-indicator active">Активно</span>
                 </div>
             </div>
+            <div class="card-background"></div>
         `;
         grid.appendChild(newCard);
         return newCard;
